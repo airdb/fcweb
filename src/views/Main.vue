@@ -6,11 +6,29 @@ body {font-family: Helvetica, sans-serif;}
    display: inline-block;
    background: url('../images/ztree/root.png') no-repeat center/100% auto;
 }
-.iconClassNode {
+.iconClassOrg {
    width:15px;
    height:15px;
    display: inline-block;
-   background: url('../images/ztree/node.png') no-repeat center/100% auto;
+   background: url('../images/ztree/org.png') no-repeat center/100% auto;
+}
+.iconClassSystem {
+   width:15px;
+   height:15px;
+   display: inline-block;
+   background: url('../images/ztree/system.png') no-repeat center/100% auto;
+}
+.iconClassSubSystem {
+   width:15px;
+   height:15px;
+   display: inline-block;
+   background: url('../images/ztree/subsystem.png') no-repeat center/100% auto;
+}
+.iconClassService {
+   width:15px;
+   height:15px;
+   display: inline-block;
+   background: url('../images/ztree/service.png') no-repeat center/100% auto;
 }
 .operate ul>li{
   float:left;
@@ -20,30 +38,8 @@ body {font-family: Helvetica, sans-serif;}
 </style>
 <template>
   <div style='display:flex;flex:3'>
-      <div style='flex:1' >
-        <h1>Hello Ztree(非异步)</h1>
-        <div class='operate'>
-           <ul>
-             <li><a href='javascript:void(0)' @click='up'>节点上移</a></li>
-             <li><a href='javascript:void(0)' @click='down'>节点下移</a></li>
-             <li><a href='javascript:void(0)' @click='delNode'>删除节点</a></li>
-             <li><a href='javascript:void(0)' @click='addNode'>新增节点</a></li>
-           </ul>
-        </div>
-        <div style='width:280px;' v-if='ztreeDataSource.length>0'>
-           <vue-ztree :list.sync='ztreeDataSource' :func='nodeClick' :is-open='false'></vue-ztree>
-        </div>
-      </div>
-
       <div style='flex:1'>
-        <h1>Hello Ztree(异步加载)</h1>
-        <div style='width:280px;' v-if='ztreeDataSourceSync.length>0'>
-           <vue-ztree :list.sync='ztreeDataSourceSync' :expand='expandClick'  :is-open='false'></vue-ztree>
-        </div>
-      </div>
-
-      <div style='flex:1'>
-        <h1>Hello Ztree(右击事件)</h1>
+        <h1>sevice tree</h1>
         <div style='width:280px;' v-if='ztreeDataSourceList.length>0'>
            <vue-ztree :list.sync='ztreeDataSourceList' :contextmenu='contextmenuClick' :is-open='true'></vue-ztree>
         </div>
@@ -62,49 +58,44 @@ export default {
       parentNodeModel: [], // 当前点击节点父亲对象
       nodeModel: null, // 当前点击节点对象
       ztreeDataSourceList: [{
-        id: 880,
-        name: '娱乐',
+        id: 1,
+        name: 'airdb',
         iconClass: 'iconClassRoot',
         open: true,
         children: [{
-          id: 881,
-          name: '游戏',
-          iconClass: 'iconClassNode'
+          id: 2,
+          name: 'sys',
+          iconClass: 'iconClassOrg',
+          children: [{
+            id: 3,
+            name: 'cmdb',
+            iconClass: 'iconClassSystem',
+            children: [{
+              id: 4,
+              name: 'api-web',
+              iconClass: 'iconClassSubSystem',
+              children: [{
+                id: 8,
+                name: 'api-web.gl',
+                iconClass: 'iconClassService'
+              }]
+            }]
+          }]
         }, {
-          id: 882,
-          name: '电影',
+          id: 5,
+          name: 'op',
           clickNode: true,
-          iconClass: 'iconClassNode'
+          iconClass: 'iconClassOrg',
+          children: [{
+            id: 7,
+            name: 'access-web.bj',
+            iconClass: 'iconClassSystem'
+          }]
+
         }, {
-          id: 883,
-          name: '新闻',
-          iconClass: 'iconClassNode'
-        }]
-      }, {
-        id: 990,
-        name: 'BAT',
-        iconClass: 'iconClassRoot',
-        open: false,
-        children: [{
-          id: 991,
-          name: '马化腾',
-          iconClass: 'iconClassNode'
-        }, {
-          id: 992,
-          name: '李彦宏',
-          iconClass: 'iconClassNode'
-        }, {
-          id: 993,
-          name: '马云',
-          iconClass: 'iconClassNode'
-        }]
-      }],
-      ztreeDataSourceSync: [{
-        id: 220,
-        name: '娱乐',
-        children: [{
-          id: 881,
-          name: '游戏'
+          id: 6,
+          name: 'dev',
+          iconClass: 'iconClassOrg'
         }]
       }]
     }
@@ -234,79 +225,6 @@ export default {
   mounted () {
     // 异步获取数据操作
     setTimeout(() => {
-      this.ztreeDataSource = [{
-        id: 220,
-        name: '游戏1',
-        children: [{
-          id: 221,
-          name: '游戏2',
-          path: '',
-          children: [{
-            id: 222,
-            name: '游戏3',
-            path: '',
-            children: [{
-              id: 223,
-              name: '游戏4',
-              path: '',
-              children: [{
-                id: 224,
-                name: '游戏5',
-                path: '',
-                children: [{
-                  id: 225,
-                  name: '游戏6',
-                  path: '',
-                  children: [{
-                    id: 226,
-                    name: '游戏末节点',
-                    path: ''
-                  }]
-                }]
-              }]
-            }]
-          }]
-        }],
-        path: 'http://www.baidu.com'
-      }, {
-        id: 1,
-        name: '音乐',
-        children: [],
-        path: 'http://www.baidu.com'
-      }, {
-        id: 2,
-        name: '视频',
-        children: [{
-          id: 3,
-          name: '电影',
-          children: [{
-            id: 4,
-            name: '国产电影',
-            path: ''
-          }, {
-            id: 5,
-            name: '好莱坞电影',
-            path: ''
-          }, {
-            id: 6,
-            name: '小语种电影',
-            path: ''
-          }]
-        }, {
-          id: 7,
-          name: '短片',
-          children: [{
-            id: 9,
-            name: '电视剧',
-            path: ''
-          }, {
-            id: 10,
-            name: '短片',
-            path: ''
-          }]
-        }],
-        path: ''
-      }]
     }, 1000)
   }
 }
