@@ -51,6 +51,8 @@ body {font-family: Helvetica, sans-serif;}
 import vueZtree from '@/components/vue-ztree.vue'
 export default {
   data () {
+    this.apiurl = 'http://airdb.com/tree/tree.json'
+
     return {
       msg: 'Hello Vue-Ztree-2.0!',
       ztreeDataSource: [],
@@ -80,6 +82,10 @@ export default {
                 iconClass: 'iconClassService'
               }]
             }]
+          }, {
+            id: 3,
+            name: 'zabix',
+            iconClass: 'iconClassSystem'
           }]
         }, {
           id: 5,
@@ -94,13 +100,26 @@ export default {
 
         }, {
           id: 6,
-          name: 'dev',
+          name: 'rd',
           iconClass: 'iconClassOrg'
         }]
       }]
     }
   },
   methods: {
+    fetchData () {
+      this.$http.get(this.apiurl).then((response) => {
+        // 响应成功回调
+        console.log(response)
+        this.result = response
+        this.message = response.body.message
+      }, (response) => {
+        // 响应错误回调
+        console.log('fail!!!!')
+        this.result = 'fetch fail!!'
+      })
+    },
+
     // 新增节点
     addNode: function () {
       if (this.nodeModel) {
@@ -218,6 +237,9 @@ export default {
         }
       }
     }
+  },
+  created () {
+    this.fetchData()
   },
   components: {
     vueZtree
