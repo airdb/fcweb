@@ -1,32 +1,32 @@
 <style>
 body {font-family: Helvetica, sans-serif;}
 .iconClassRoot {
-   width:15px;
-   height:15px;
+   width:20px;
+   height:20px;
    display: inline-block;
    background: url('../images/ztree/root.png') no-repeat center/100% auto;
 }
 .iconClassOrg {
-   width:15px;
-   height:15px;
+   width:20px;
+   height:20px;
    display: inline-block;
    background: url('../images/ztree/org.png') no-repeat center/100% auto;
 }
 .iconClassSystem {
-   width:15px;
-   height:15px;
+   width:20px;
+   height:20px;
    display: inline-block;
    background: url('../images/ztree/system.png') no-repeat center/100% auto;
 }
 .iconClassSubSystem {
-   width:15px;
-   height:15px;
+   width:20px;
+   height:20px;
    display: inline-block;
    background: url('../images/ztree/subsystem.png') no-repeat center/100% auto;
 }
 .iconClassService {
-   width:15px;
-   height:15px;
+   width:20px;
+   height:20px;
    display: inline-block;
    background: url('../images/ztree/service.png') no-repeat center/100% auto;
 }
@@ -40,6 +40,7 @@ body {font-family: Helvetica, sans-serif;}
   <div style='display:flex;flex:3'>
       <div style='flex:1'>
         <h1>sevice tree</h1>
+	{{ ztreeDataSourceJson.name }}
         <div style='width:280px;' v-if='ztreeDataSourceList.length>0'>
            <vue-ztree :list.sync='ztreeDataSourceList' :contextmenu='contextmenuClick' :is-open='true'></vue-ztree>
         </div>
@@ -59,6 +60,7 @@ export default {
       show: true,
       parentNodeModel: [], // 当前点击节点父亲对象
       nodeModel: null, // 当前点击节点对象
+      ztreeDataSourceJson: '',
       ztreeDataSourceList: [{
         id: 1,
         name: 'airdb',
@@ -97,7 +99,6 @@ export default {
             name: 'access-web.bj',
             iconClass: 'iconClassSystem'
           }]
-
         }, {
           id: 6,
           name: 'rd',
@@ -110,8 +111,9 @@ export default {
     fetchData () {
       this.$http.get(this.apiurl).then((response) => {
         // 响应成功回调
-        console.log(response)
+        console.log(response.data)
         this.result = response
+        this.ztreeDataSourceJson = response.data
         this.message = response.body.message
       }, (response) => {
         // 响应错误回调

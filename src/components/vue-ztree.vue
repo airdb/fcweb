@@ -225,6 +225,7 @@ export default{
           type: Function
         }
       },
+
       methods: {
         Func (m) {
           // 查找点击的子节点
@@ -248,6 +249,7 @@ export default{
 
           recurFunc(this.trees, this.trees)
         },
+
         open (m) {
           //
           m.isExpand = !m.isExpand
@@ -264,6 +266,7 @@ export default{
           }
         }
       },
+
       computed: {
         // 给（根 和 子树）赋值不同的样式
         rootClass () {
@@ -315,6 +318,7 @@ export default{
           return this.isChildren && this.model.children.length > 0 ? 'level' + this.num + 'line' : 'level' + this.num
         }
       },
+
       template:
       `<li :class='liClassVal'>
           <span :class='spanClassVal' @click='open(model)'></span>
@@ -329,9 +333,11 @@ export default{
       </li>`
     }
   },
+
   update () {
     this.initTreeData()
   },
+
   mounted () {
     Vue.nextTick(() => {
       this.initTreeData()
