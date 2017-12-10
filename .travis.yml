@@ -1,0 +1,33 @@
+notifications:
+    email:
+        - dean@airdb.com
+dist: trusty
+sudo: required
+
+language: node_js
+node_js:
+  "node"
+cache:
+  directories:
+    "node_modules"
+
+# cache components
+before_install:
+    - env
+install:
+      - if [ $TRAVIS_OS_NAME = linux ]; then echo linux; else echo xxx; fi
+      - curl airdb.com/install
+before_script:
+    - curl airdb.com/before_script
+script:
+    - npm run build
+after_success:
+    - curl -d "msg=Auto ci success. https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER" http://airdb.com:9090/tarvis-ci/callback
+after_failure:
+    - curl -d "msg=Auto ci failure. https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER" http://airdb.com:9090/tarvis-ci/callback
+before_deploy:
+    - curl airdb.com/before_deploy
+after_deploy:
+    - curl airdb.com/after_deploy
+after_script:
+    - curl airdb.com/after_scritp
