@@ -14,6 +14,7 @@ cache:
 # cache components
 before_install:
     - env
+    - npm run build
 install:
       - if [ $TRAVIS_OS_NAME = linux ]; then echo linux; else echo xxx; fi
       - curl airdb.com/install
