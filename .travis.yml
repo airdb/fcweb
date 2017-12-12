@@ -24,7 +24,8 @@ script:
     - npm run build
     - ls -l 
     # - tree
-    - tar -czvf fcweb_$TRAVIS_COMMIT.tgz ./dist
+    - mkdir -p releases
+    - tar -czvf releases/fcweb_$TRAVIS_COMMIT.tgz ./dist
 after_success:
     - curl  "https://awsapi.airdb.vip/travis-ci?status=success&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
 after_failure:
@@ -36,10 +37,10 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY_ID
     secret_access_key: $AWS_SECRET_KEY
     bucket: $BUCKET
-    # local_dir: "./dist"
-    file: "fcweb_$TRAVIS_COMMIT.tgz"
+    local_dir: "./releases"
+    #file: "fcweb_$TRAVIS_COMMIT.tgz"
     upload-dir: "fcweb"
-    default_text_charset: 'utf-8'
+    #default_text_charset: 'utf-8'
 #    on:
 #        branch: master
 after_deploy:
