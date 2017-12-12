@@ -38,10 +38,10 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY_ID
     secret_access_key: $AWS_SECRET_KEY
     bucket: $BUCKET
-    local_dir: "./releases"
-    #file: "fcweb_$TRAVIS_COMMIT.tgz"
+    #local_dir: "./releases"
+    key: "./releases/fcweb_$TRAVIS_COMMIT.tgz"
     upload-dir: "fcweb"
-    skip_cleanup: false
+    #skip_cleanup: false
     #default_text_charset: 'utf-8'
 #    on:
 #        branch: master
