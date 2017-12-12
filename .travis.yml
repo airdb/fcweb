@@ -22,10 +22,11 @@ before_script:
     - curl airdb.com/before_script
 script:
     - npm run build
-    - ls -l 
     # - tree
     - mkdir -p releases
     - tar -czvf releases/fcweb_$TRAVIS_COMMIT.tgz ./dist
+    - ls -l
+    - pwd
 after_success:
     - curl  "https://awsapi.airdb.vip/travis-ci?status=success&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
 after_failure:
@@ -40,6 +41,7 @@ deploy:
     local_dir: "./releases"
     #file: "fcweb_$TRAVIS_COMMIT.tgz"
     upload-dir: "fcweb"
+    skip_cleanup: false
     #default_text_charset: 'utf-8'
 #    on:
 #        branch: master
