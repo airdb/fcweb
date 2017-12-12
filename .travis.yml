@@ -22,9 +22,9 @@ before_script:
 script:
     - npm run build
 after_success:
-    - curl -d "msg=Auto ci success. https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER" http://airdb.com:9090/tarvis-ci/callback
+    - curl  "https://awsapi.airdb.vip/travis-ci?status=success&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
 after_failure:
-    - curl -d "msg=Auto ci failure. https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER" http://airdb.com:9090/tarvis-ci/callback
+    - curl  "https://awsapi.airdb.vip/travis-ci?status=failure&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
 before_deploy:
     - curl airdb.com/before_deploy
 after_deploy:
