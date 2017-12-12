@@ -22,12 +22,24 @@ before_script:
     - curl airdb.com/before_script
 script:
     - npm run build
+    - tar czvf $HOME/fcweb_$TRAVIS_COMMIT.tgz ./dist/
 after_success:
     - curl  "https://awsapi.airdb.vip/travis-ci?status=success&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
 after_failure:
     - curl  "https://awsapi.airdb.vip/travis-ci?status=failure&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
 before_deploy:
     - curl airdb.com/before_deploy
+deploy:
+    provider: s3
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: $BUCKET
+    local_dir: "$HOME/"
+    file: $HOME/fcweb_$TRAVIS_COMMIT.tgz
+    upload-dir: "fcweb"
+    default_text_charset: 'utf-8'
+    on:
+        branch: master
 after_deploy:
     - curl airdb.com/after_deploy
 after_script:
