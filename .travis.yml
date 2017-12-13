@@ -23,8 +23,7 @@ before_script:
 script:
     - npm run build
     # - tree
-    - gzip ./dist
-    - mv dist.gz fcweb_$TRAVIS_COMMIT.gz
+    - tar -zcf ${TRAVIS_BUILD_DIR}${REPO}-${BUILD_ENV}-${TRAVIS_TAG}-${TRAVIS_BUILD_NUMBER}.tar.gz dist
     - ls -l
     - pwd
 after_success:
@@ -34,15 +33,22 @@ after_failure:
 before_deploy:
     - curl airdb.com/before_deploy
 deploy:
-    provider: s3
-    access_key_id: $AWS_ACCESS_KEY_ID
-    secret_access_key: $AWS_SECRET_KEY
-    bucket: $BUCKET
-    #local_dir: "./releases"
-    key: "fcweb_$TRAVIS_COMMIT.gz"
-    upload-dir: "fcweb"
-    #skip_cleanup: false
-    #default_text_charset: 'utf-8'
+    - provider: releases
+      api_key:
+          secure: "GITHUB_DEPLOY_API_KEY"
+      file: ${TRAVIS_BUILD_DIR}${REPO}-${BUILD_ENV}-${TRAVIS_TAG}-${TRAVIS_BUILD_NUMBER}.tar.gz
+      skip_cleanup: true
+      on: 
+      tags: true
+    #    provider: s3
+    #    access_key_id: $AWS_ACCESS_KEY_ID
+    #    secret_access_key: $AWS_SECRET_KEY
+    #    bucket: $BUCKET
+    #    #local_dir: "./releases"
+    #    key: "fcweb_$TRAVIS_COMMIT.gz"
+    #    upload-dir: "fcweb"
+    #    #skip_cleanup: false
+    #    #default_text_charset: 'utf-8'
 #    on:
 #        branch: master
 after_deploy:
