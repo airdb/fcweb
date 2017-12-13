@@ -34,8 +34,8 @@ before_deploy:
     - curl airdb.com/before_deploy
 deploy:
     - provider: releases
-      api_key:
-          secure: "GITHUB_DEPLOY_API_KEY"
+      user: $GITHUB_USERNAME
+      password: $GITHUB_PASSWORD
       file: ${TRAVIS_BUILD_DIR}${REPO}-${BUILD_ENV}-${TRAVIS_TAG}-${TRAVIS_BUILD_NUMBER}.tar.gz
       skip_cleanup: true
       on: 
