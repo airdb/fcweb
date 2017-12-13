@@ -23,8 +23,8 @@ before_script:
 script:
     - npm run build
     # - tree
-    - mkdir -p releases
-    - tar -czvf releases/fcweb_$TRAVIS_COMMIT.tgz ./dist
+    - gzip ./dist
+    - mv dist.gz fcweb_$TRAVIS_COMMIT.gz
     - ls -l
     - pwd
 after_success:
@@ -39,7 +39,7 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY
     bucket: $BUCKET
     #local_dir: "./releases"
-    key: "./releases/fcweb_$TRAVIS_COMMIT.tgz"
+    key: "fcweb_$TRAVIS_COMMIT.gz"
     upload-dir: "fcweb"
     #skip_cleanup: false
     #default_text_charset: 'utf-8'
