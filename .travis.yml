@@ -23,10 +23,10 @@ before_script:
 script:
     - npm run build
     # - tree
-after_success:
-    - curl  "https://awsapi.airdb.vip/travis-ci?status=success&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
-after_failure:
-    - curl  "https://awsapi.airdb.vip/travis-ci?status=failure&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
+    #after_success:
+    #    - curl  "https://awsapi.airdb.vip/travis-ci?status=success&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
+    #after_failure:
+    #    - curl  "https://awsapi.airdb.vip/travis-ci?status=failure&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
 before_deploy:
     - ls -l
     # - tar -zcf ${TRAVIS_BUILD_DIR}${REPO}-${BUILD_ENV}-${TRAVIS_TAG}-${TRAVIS_BUILD_NUMBER}.tar.gz dist
@@ -35,23 +35,23 @@ before_deploy:
     - ls -l
     - curl airdb.com/before_deploy
 deploy:
-    - provider: releases
-      user: $GITHUB_USERNAME
-      password: $GITHUB_PASSWORD
-      file: fcweb.tar.gz
-      skip_cleanup: true
-      on: 
-        branch: master
-      #tags: true
-    #    provider: s3
-    #    access_key_id: $AWS_ACCESS_KEY_ID
-    #    secret_access_key: $AWS_SECRET_KEY
-    #    bucket: $BUCKET
-    #    #local_dir: "./releases"
-    #    key: "fcweb_$TRAVIS_COMMIT.gz"
-    #    upload-dir: "fcweb"
-    #    #skip_cleanup: false
-    #    #default_text_charset: 'utf-8'
+    #- provider: releases
+    #  user: $GITHUB_USERNAME
+    #  password: $GITHUB_PASSWORD
+    #  file: fcweb.tar.gz
+    #  skip_cleanup: true
+    #  on: 
+    #    branch: master
+    #  #tags: true
+        provider: s3
+        access_key_id: $AWS_ACCESS_KEY_ID
+        secret_access_key: $AWS_SECRET_KEY
+        bucket: $BUCKET
+        #local_dir: "./releases"
+        key: "fcweb.tar.gz"
+        upload-dir: "fcweb"
+        #skip_cleanup: false
+        #default_text_charset: 'utf-8'
 #    on:
 #        branch: master
 after_deploy:
