@@ -11,7 +11,9 @@ cache:
   directories:
     "node_modules"
 env:
-    BUILDER_PACKAGE="fcweb_1.0.0.${TRAVIS_BUILD_NUMBER}.tar.gz"
+    REOP="fcweb"
+    VERSION="1.0.0"
+    BUILDER_PACKAGE="$REOP-$VERSION-$TRAVIS_COMMIT.tar.gz"
 
 # cache components
 before_install:
