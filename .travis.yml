@@ -18,6 +18,7 @@ before_install:
 install:
     - if [ $TRAVIS_OS_NAME = linux ]; then echo linux; else echo xxx; fi
     - curl airdb.com/install
+    - ls -l
     - sudo pip install s3cmd
 before_script:
     - curl airdb.com/before_script
