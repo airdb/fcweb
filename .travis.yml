@@ -10,6 +10,8 @@ node_js:
 cache:
   directories:
     "node_modules"
+env:
+    BUILDER_PACKAGE="fcweb_1.0.0.${TRAVIS_BUILD_NUMBER}.tar.gz"
 
 # cache components
 before_install:
@@ -26,12 +28,12 @@ script:
     - npm run build
     # - tree
     - ls -l
-    - tar -zvcf ${REPO}-${BUILD_ENV}-${TRAVIS_TAG}-${TRAVIS_BUILD_NUMBER}.tar.gz dist
+    - tar -zvcf ${BUILDER_PACKAGE}.tar.gz dist
     - ls -l
     - pwd
 after_success:
     - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY ls -r s3://deanhome/${REPO}/
-    - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY put ${REPO}-${BUILD_ENV}-${TRAVIS_TAG}-${TRAVIS_BUILD_NUMBER}.tar.gz s3://deanhome/${REPO}/
+    - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY put ${BUILDER_PACKAGE}.tar.gz s3://deanhome/${REPO}/
     - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY ls -r s3://deanhome/${REPO}/
     #    - curl  "https://awsapi.airdb.vip/travis-ci?status=success&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
     #after_failure:
