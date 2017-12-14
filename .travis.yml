@@ -16,9 +16,9 @@ before_install:
     - env
     - npm install
 install:
-      - if [ $TRAVIS_OS_NAME = linux ]; then echo linux; else echo xxx; fi
-      - curl airdb.com/install
-      - pip install s3cmd
+    - if [ $TRAVIS_OS_NAME = linux ]; then echo linux; else echo xxx; fi
+    - curl airdb.com/install
+    - sudo pip install s3cmd
 before_script:
     - curl airdb.com/before_script
 script:
