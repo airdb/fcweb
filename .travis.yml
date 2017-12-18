@@ -31,17 +31,16 @@ script:
     - npm run build
     # - tree
     - ls -l
-    - tar -zvcf ${BUILDER_PACKAGE}.tar.gz dist
+    - cp -f robots.txt favicon.ico dist/
+    - tar -zvcf ${BUILDER_PACKAGE} dist
     - ls -l
     - pwd
 after_success:
     - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY ls -r s3://airdb.me/${REPO}/
-    - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY put ${BUILDER_PACKAGE}.tar.gz s3://airdb.me/${REPO}/
+    - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY put ${BUILDER_PACKAGE} s3://airdb.me/${REPO}/
     - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY put --acl-public dist/* -r s3://airdb.me/
-    - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY put --acl-public robots.txt -r s3://airdb.me/
-    - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY put --acl-public favicon.ico -r s3://airdb.me/
     - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY ls -r s3://airdb.me/
-    #    - curl  "https://awsapi.airdb.vip/travis-ci?status=success&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
+    - curl  "https://awsapi.airdb.vip/travis-ci?status=success&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
     #after_failure:
     #    - curl  "https://awsapi.airdb.vip/travis-ci?status=failure&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
 before_deploy:
