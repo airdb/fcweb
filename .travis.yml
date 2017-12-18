@@ -24,6 +24,7 @@ install:
     - curl airdb.com/install
     - ls -l
     - sudo pip install s3cmd
+    - sudo pip install aws
 before_script:
     - curl airdb.com/before_script
 script:
@@ -34,9 +35,10 @@ script:
     - ls -l
     - pwd
 after_success:
-    - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY ls -r s3://deanhome/${REPO}/
-    - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY put ${BUILDER_PACKAGE}.tar.gz s3://deanhome/${REPO}/
-    - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY ls -r s3://deanhome/${REPO}/
+    - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY ls -r s3://airdb.me/${REPO}/
+    - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY put ${BUILDER_PACKAGE}.tar.gz s3://airdb.me/${REPO}/
+    - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY put --acl-public dist/* -r s3://airdb.me/
+    - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY ls -r s3://airdb.me/
     #    - curl  "https://awsapi.airdb.vip/travis-ci?status=success&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
     #after_failure:
     #    - curl  "https://awsapi.airdb.vip/travis-ci?status=failure&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
