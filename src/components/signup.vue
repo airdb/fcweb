@@ -1,6 +1,6 @@
 <template>
-  <div class="signin">
-    <h1>登录</h1>
+  <div class="signup">
+    <h1>注册</h1>
     <h1>{{ msg }}</h1>
   </div>
 
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'signin',
+  name: 'signup',
   data () {
     return {
       ruleForm: {
