@@ -13,9 +13,9 @@ export default {
     return {
       ruleForm: {
         username: 'admin',
-        password: '1111111'
+        password: 'admin'
       },
-      msg: 'Welcome to signin'
+      msg: 'Welcome to signin, https://aws.airdb.io/lambda/Passport'
     }
   }
 }

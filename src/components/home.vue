@@ -11,7 +11,7 @@ export default {
   data () {
     return {
       web: 'http://docs.airdb.com',
-      msg: 'Welcome to Your home'
+      msg: 'Welcome to Your home, passport: https://aws.airdb.io/lambda/Passport'
     }
   }
 }

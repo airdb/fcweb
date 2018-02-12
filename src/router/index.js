@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/home'
-import SignIn from '@/components/signin'
-import SignUp from '@/components/signup'
+import home from '@/components/home'
+import signin from '@/components/signin'
+import signup from '@/components/signup'
 import Main from '@/views/Main'
 
 Vue.use(Router)
@@ -13,7 +13,7 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: home
     },
     {
       path: '/tree',
@@ -23,17 +23,17 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      component: Home
+      component: home
     },
     {
       path: '/signin',
       name: 'signin',
-      component: SignIn
+      component: signin
     },
     {
       path: '/signup',
       name: 'signup',
-      component: SignUp
+      component: signup
     },
     {
       path: '/signout',
