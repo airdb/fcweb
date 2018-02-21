@@ -12,6 +12,7 @@ cache:
     "node_modules"
 env:
   matrix:
+    - OS_TYPE=centos OS_VERSION=6
     - OS_TYPE=centos OS_VERSION=7
       # REPO="fcweb"
       # VERSION="1.0.0"
