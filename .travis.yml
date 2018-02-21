@@ -37,10 +37,15 @@ script:
     - ls -l
     - pwd
 after_success:
+    - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+    - aws configure set aws_secret_access_key  $AWS_SECRET_KEY
+    - aws s3 ls airdb.io
+    - aws s3 cp ${BUILDER_PACKAGE} airdb.io
+    - aws s3 ls airdb.io
     # - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY ls -r s3://airdb.me/${REPO}/
-      #- s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY put ${BUILDER_PACKAGE} s3://airdb.me/${REPO}/
-      #- s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY put --acl-public dist/* -r s3://airdb.me/
-      #- s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY ls -r s3://airdb.me/websites/airdb.io/
+    #- s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY put ${BUILDER_PACKAGE} s3://airdb.me/${REPO}/
+    #- s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY put --acl-public dist/* -r s3://airdb.me/
+    #- s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY ls -r s3://airdb.me/websites/airdb.io/
     - curl  "${WechatMSG}?status=success&from=travis&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
     #after_failure:
     #    - curl  "https://awsapi.airdb.vip/travis-ci?status=failure&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
