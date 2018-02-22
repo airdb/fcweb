@@ -38,17 +38,10 @@ script:
     - aws --version
     - aws configure set aws_access_key_id ${AWS_ACCESS_KEY_ID}
     - aws configure set aws_secret_access_key  ${AWS_SECRET_ACCESS_KEY}
-    - aws configure get aws_secret_access_key
-    - echo ${AWS_SECRET_ACCESS_KEY}
 after_success:
-    - cat ~/.aws/credentials | tail -n1
-    - aws s3 ls airdb.io
-    - aws s3 cp ${BUILDER_PACKAGE} airdb.io
-    - aws s3 ls airdb.io
-    # - s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY ls -r s3://airdb.me/${REPO}/
-    #- s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY put ${BUILDER_PACKAGE} s3://airdb.me/${REPO}/
-    #- s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY put --acl-public dist/* -r s3://airdb.me/
-    #- s3cmd --access_key=$AWS_ACCESS_KEY_ID --secret_key=$AWS_SECRET_KEY ls -r s3://airdb.me/websites/airdb.io/
+    # - cat ~/.aws/credentials | tail -n1
+    - aws s3 cp ${BUILDER_PACKAGE} $BUCKET/${REPO}
+    - aws s3 ls $BUCKET
     - curl  "${WechatMSG}?status=success&from=travis&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
     #after_failure:
     #    - curl  "https://awsapi.airdb.vip/travis-ci?status=failure&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
