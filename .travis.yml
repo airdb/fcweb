@@ -40,7 +40,7 @@ script:
     - aws configure set aws_secret_access_key  ${AWS_SECRET_ACCESS_KEY}
 after_success:
     # - cat ~/.aws/credentials | tail -n1
-    - aws s3 cp ${BUILDER_PACKAGE} $BUCKET/${REPO}
+    - aws s3 cp --recursive ${BUILDER_PACKAGE} $BUCKET/${REPO}/
     - aws s3 ls $BUCKET
     - curl  "${WechatMSG}?status=success&from=travis&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
     #after_failure:
