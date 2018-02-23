@@ -57,7 +57,7 @@ before_deploy:
     #  skip_cleanup: true
     #  on: 
     #    branch: master
-    #  #tags: true
+    #  tags: true
     #    provider: s3
     #    access_key_id: $AWS_ACCESS_KEY_ID
     #    secret_access_key: $AWS_SECRET_KEY
