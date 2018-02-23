@@ -38,10 +38,11 @@ script:
     - aws configure set aws_secret_access_key  ${AWS_SECRET_ACCESS_KEY}
 after_success:
     # - cat ~/.aws/credentials | tail -n1
-    # - aws s3 cp --recursive ${BUILDER_PACKAGE} $BUCKET/${REPO}/
+    - aws s3 cp --recursive --acl public-read dist/ $BUCKET/website/dist_${TRAVIS_COMMIT}/
     - aws s3 cp ${BUILDER_PACKAGE} $BUCKET/${REPO}/
     - aws s3 ls $BUCKET
     - curl  "${WechatMSG}?status=success&from=travis&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
+    - echo http://www.airdb.com/website/dist_${TRAVIS_COMMIT}/index.html
     #after_failure:
     #    - curl  "https://awsapi.airdb.vip/travis-ci?status=failure&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
 before_deploy:
