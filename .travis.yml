@@ -31,14 +31,16 @@ script:
     - npm run build
     # - tree
     - cp -f robots.txt favicon.ico dist/
-    - tar -zvcf ${BUILDER_PACKAGE} dist
+    - sed  -i 's@/static/@/website/dist_${TRAVIS_COMMIT}/static/@g' dist/index.html
+    - mv dist dist_${TRAVIS_COMMIT}
+    - tar -zvcf ${BUILDER_PACKAGE} dist_${TRAVIS_COMMIT}
     - ls -l
     - pwd
     - aws configure set aws_access_key_id ${AWS_ACCESS_KEY_ID}
     - aws configure set aws_secret_access_key  ${AWS_SECRET_ACCESS_KEY}
 after_success:
     # - cat ~/.aws/credentials | tail -n1
-    - aws s3 cp --recursive --acl public-read dist/ $BUCKET/website/dist_${TRAVIS_COMMIT}/
+    - aws s3 cp --recursive --acl public-read dist_${TRAVIS_COMMIT}/ $BUCKET/website/dist_${TRAVIS_COMMIT}/
     - aws s3 cp ${BUILDER_PACKAGE} $BUCKET/${REPO}/
     - aws s3 ls $BUCKET
     - curl  "${WechatMSG}?status=success&from=travis&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
