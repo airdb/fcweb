@@ -31,7 +31,7 @@ script:
     - npm run build
     # - tree
     - cp -f robots.txt favicon.ico dist/
-    - sed  -i 's@/static/@/website/dist_${TRAVIS_COMMIT}/static/@g' dist/index.html
+    - sed  -i "s@/static/@/website/dist_${TRAVIS_COMMIT}/static/@g" dist/index.html
     - mv dist dist_${TRAVIS_COMMIT}
     - tar -zvcf ${BUILDER_PACKAGE} dist_${TRAVIS_COMMIT}
     - ls -l
