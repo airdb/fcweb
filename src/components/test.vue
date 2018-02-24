@@ -1,0 +1,60 @@
+<template>
+  <el-container>
+  <el-header>
+  <div id="test">
+    <el-menu :default-active="activeIndex" background-color="#545c64" active-text-color="#ffd04b" mode="horizontal" class="aaa" @select="handleSelect">
+      <el-menu-item index="1">Home</el-menu-item>
+      <el-menu-item index="2">Projects</el-menu-item>
+      <el-menu-item index="3">Services</el-menu-item>
+      <el-menu-item index="3">Downloads</el-menu-item>
+      <el-menu-item index="4"><a href="http://docs.airdb.com" target="_blank">Docs</a></el-menu-item>
+      <el-menu-item index="3">About</el-menu-item>
+    </el-menu>
+  </div>
+  </el-header>
+  <!--
+  <el-aside height="1000px" width="300px">
+  aside
+  </el-aside>
+  <el-main height="1000px" width="300px">
+  main
+  </el-main>
+  <el-footer>
+  footer
+  </el-footer>
+  -->
+  </el-container>
+
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+        activeIndex: '1',
+        activeIndex2: '1'
+      }
+    },
+    methods: {
+      handleSelect (key, keyPath) {
+        console.log(key, keyPath)
+      }
+    }
+  }
+</script>
+
+<style>
+#test {
+    width: 40%;
+    padding: 0;
+    margin: 0 auto;
+    }
+.el-menu-item {
+   font-size: 34px;
+}
+
+.aaa {
+    border-radius: 8px;
+}
+
+</style>
