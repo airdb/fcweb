@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from '@/components/home'
+import test from '@/components/test'
 import signin from '@/components/signin'
 import signup from '@/components/signup'
+import root from '@/components/root'
 import Main from '@/views/Main'
 
 Vue.use(Router)
@@ -12,11 +13,19 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'root',
       meta: {
-        title: 'Home | airdb.com'
+        title: 'root | airdb.com'
       },
-      component: home
+      component: root
+    },
+    {
+      path: '/test',
+      name: 'test',
+      meta: {
+        title: 'Test | airdb.com'
+      },
+      component: test
     },
     {
       path: '/tree',

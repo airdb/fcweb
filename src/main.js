@@ -6,6 +6,8 @@ import router from './router'
 import VueResource from 'vue-resource'
 
 import VueWechatTitle from 'vue-wechat-title'
+// import ElementUI from 'element-ui'
+// import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.use(VueWechatTitle)
 Vue.use(VueResource)
