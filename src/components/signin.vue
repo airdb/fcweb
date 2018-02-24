@@ -17,7 +17,7 @@
 export default {
   name: 'signin',
   data () {
-    this.apiurl = 'https://airdb.io/lambda/Passport'
+    this.apiurl = 'https://aws.airdb.io/lambda/Passport'
     return {
       username: 'dean',
       password: 'dean',

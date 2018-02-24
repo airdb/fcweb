@@ -1,7 +1,7 @@
 <template>
   <div class="Home">
     <h1>{{ msg }}</h1>
-    <a href="singin"> {{web}} </a>
+    <a href="#/signin"> {{web}} </a>
   </div>
 </template>
 
