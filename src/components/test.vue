@@ -1,14 +1,14 @@
 <template>
   <el-container>
-  <el-header>
+  <el-header background-color="red">
   <div id="test">
-    <el-menu :default-active="activeIndex" background-color="#545c64" active-text-color="#ffd04b" mode="horizontal" class="aaa" @select="handleSelect">
+    <el-menu :default-active="activeIndex" background-color="#ddd" active-text-color="#eee" mode="horizontal" class="aaa" @select="handleSelect">
       <el-menu-item index="1">Home</el-menu-item>
       <el-menu-item index="2">Projects</el-menu-item>
       <el-menu-item index="3">Services</el-menu-item>
-      <el-menu-item index="3">Downloads</el-menu-item>
-      <el-menu-item index="4"><a href="http://docs.airdb.com" target="_blank">Docs</a></el-menu-item>
-      <el-menu-item index="3">About</el-menu-item>
+      <el-menu-item index="4">Downloads</el-menu-item>
+      <el-menu-item index="5"><a href="http://docs.airdb.com" target="_blank">Docs</a></el-menu-item>
+      <el-menu-item index="6">About</el-menu-item>
     </el-menu>
   </div>
   </el-header>
@@ -45,7 +45,7 @@
 
 <style>
 #test {
-    width: 40%;
+    width: 80%;
     padding: 0;
     margin: 0 auto;
     }
