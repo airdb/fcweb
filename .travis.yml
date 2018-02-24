@@ -46,6 +46,7 @@ after_success:
     - aws s3 cp ${BUILDER_PACKAGE} $BUCKET/${REPO}/
     - aws s3 ls $BUCKET
     - curl  "${WechatMSG}?status=success&from=travis&info=${TARVIS_URL}&msg=${RELEASE_URL}
+    - echo "${WechatMSG}?status=success&from=travis&info=${TARVIS_URL}&msg=${RELEASE_URL}
     - echo ${RELEASE_URL}
     #after_failure:
     #    - curl  "https://awsapi.airdb.vip/travis-ci?status=failure&info=https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID#$TRAVIS_BUILD_NUMBER"
