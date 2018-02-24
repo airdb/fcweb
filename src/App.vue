@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img src="https://srehub.github.io/public/images/logo.png">
-    <router-view></router-view>
+    <router-view v-wechat-title='$route.meta.title'></router-view>
   </div>
 </template>
 

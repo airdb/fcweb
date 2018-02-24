@@ -5,6 +5,9 @@ import App from './App'
 import router from './router'
 import VueResource from 'vue-resource'
 
+import VueWechatTitle from 'vue-wechat-title'
+
+Vue.use(VueWechatTitle)
 Vue.use(VueResource)
 
 Vue.config.productionTip = false
