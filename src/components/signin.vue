@@ -6,8 +6,8 @@
     <h1>{{ user }}</h1>
     <ul>
     <li><input type="text" v-model="username" ></li>
-    <li><input type="password"  v-model="password"></li>
-    <button v-on:click="greet">login</button>
+    <li><input type="password" autocomplete="new-password" v-model="password"></li>
+    <button v-on:click="login">login</button>
 
     </ul>
   </div>
@@ -21,8 +21,8 @@ export default {
     this.apiurl = 'https://aws.airdb.io/lambda/test'
     return {
       user: sessionStorage.username,
-      username: 'deanx',
-      password: 'dean',
+      username: '',
+      password: '',
       status: -1,
       token: 'defualt',
       msg: 'Welcome to signin, https://aws.airdb.io/lambda/test'
@@ -30,7 +30,7 @@ export default {
   },
 
   methods: {
-    greet: function (event) {
+    login: function (event) {
       this.$http.get(this.apiurl).then((response) => {
         // 响应成功回调
         console.log(response.data)
