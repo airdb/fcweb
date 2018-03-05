@@ -9,6 +9,11 @@ import VueWechatTitle from 'vue-wechat-title'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+import '../theme/index.css'
+import VueSession from 'vue-session'
+Vue.use(VueSession)
+// Vue.use(VueSession, options)
+
 Vue.use(ElementUI)
 Vue.use(VueWechatTitle)
 Vue.use(VueResource)
