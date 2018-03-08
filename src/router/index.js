@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import test from '@/components/test'
+import tree from '@/components/tree'
+import login from '@/components/login'
+import navmenu from '@/components/navmenu'
 import signin from '@/components/signin'
 import signup from '@/components/signup'
 import root from '@/components/root'
@@ -33,7 +36,15 @@ export default new Router({
       meta: {
         title: 'Tree | airdb.com'
       },
-      component: Main
+      component: tree
+    },
+    {
+      path: '/navmenu',
+      name: 'Hello nav menu',
+      meta: {
+        title: 'nav menu| airdb.com'
+      },
+      component: navmenu
     },
     {
       path: '/signin',
@@ -50,6 +61,14 @@ export default new Router({
         title: 'signup | airdb.com'
       },
       component: signup
+    },
+    {
+      path: '/login',
+      name: 'login',
+      meta: {
+        title: 'Sign in to airdb | airdb.com'
+      },
+      component: login
     },
     {
       path: '/signout',
