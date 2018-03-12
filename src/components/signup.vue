@@ -7,8 +7,12 @@
 </template>
 
 <script>
+import root from '@/components/root'
 export default {
   name: 'signup',
+  components: {
+    root
+  },
   data () {
     return {
       ruleForm: {

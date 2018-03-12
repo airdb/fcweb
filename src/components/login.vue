@@ -51,12 +51,13 @@ export default {
         this.username = this.$session.get('username')
         this.stauts = 0
         // alert(this.username, this)
+        // this.$router.push({ path: '/' })
+        this.$router.push('/')
       }, (response) => {
         // 响应错误回调
         console.log('fail!!!!')
         // this.result = 'fetch fail!!'
       })
-      this.$router.push({ path: '/' })
       // alert(this.status)
       // if (this.status === 0) {
       //   alert(this.username)
