@@ -14,12 +14,14 @@
   </el-header>
 
   <el-container>
-    <el-aside width="300px">
-      <div>
-      <el-input
+    <el-aside class="el-aside" >
+      <div class="tree">
+      <el-input class="source"
         placeholder="搜索"
         v-model="filterText">
       </el-input>
+      <!--
+      -->
       
       <el-tree
         class="filter-tree"
@@ -28,7 +30,26 @@
         default-expand-all
         :filter-node-method="filterNode"
         ref="tree2">
+
+        <span class="custom-tree-node" slot-scope="{ node, data }">
+          <span>{{ node.label }}</span>
+          <span>
+            <el-button
+              type="text"
+              size="mini"
+              @click="() => append(data)">
+              Append
+            </el-button>
+            <el-button
+              type="text"
+              size="mini"
+              @click="() => remove(node, data)">
+              Delete
+            </el-button>
+          </span>
+        </span>
       </el-tree>
+
       </div>
 
 
@@ -44,22 +65,62 @@
     <el-main width="300px">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-        <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-        <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+        <el-breadcrumb-item>服务树</el-breadcrumb-item>
+        <el-breadcrumb-item>api-web</el-breadcrumb-item>
+        <el-breadcrumb-item>华北节点</el-breadcrumb-item>
       </el-breadcrumb>
 
+  <el-table ref="multipleTable" :data="tableData3" tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
+    <el-table-column type="selection" width="55">
+    </el-table-column>
+    <el-table-column label="日期" width="120">
+      <template slot-scope="scope">{{ scope.row.date }}</template>
+    </el-table-column>
+    <el-table-column prop="name" label="实例ID" width="120">
+    </el-table-column>
+    <el-table-column prop="address" label="地址" show-overflow-tooltip>
+    </el-table-column>
+    <el-table-column label="操作">
+      <template slot-scope="scope">
+        <el-button
+          size="mini"
+          @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+        <el-button
+          size="mini"
+          type="danger"
+          @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+      </template>
+    </el-table-column>
+  </el-table>
+  <div style="margin-top: 20px">
+    <el-button @click="toggleSelection([tableData3[1], tableData3[2]])">切换第二、第三行的选中状态</el-button>
+    <el-button @click="toggleSelection()">取消选择</el-button>
+  </div>
+
+
+      <el-carousel :interval="4000" type="card" height="60px">
+        <el-carousel-item v-for="item in 6" :key="item">
+          <h3>{{ item }}</h3>
+        </el-carousel-item>
+      </el-carousel>
+
+     <!--
       <el-tag>标签一</el-tag>
       <el-tag type="success">标签二</el-tag>
       <el-tag type="info">标签三</el-tag>
       <el-tag type="warning">标签四</el-tag>
       <el-tag type="danger">标签五</el-tag>
+    -->
 
-      <el-pagination
-        background
-        layout="prev, pager, next"
-        :total="1000">
-      </el-pagination>
+    <el-pagination
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="currentPage4"
+      :page-sizes="[100, 200, 300, 400]"
+      :page-size="100"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="400">
+    </el-pagination>
     </el-main>
   </el-container>
   <!--
@@ -81,6 +142,41 @@
         activeIndex: '1',
         activeIndex2: '1',
         filterText: '',
+        currentPage1: 5,
+        currentPage2: 5,
+        currentPage3: 5,
+        currentPage4: 4,
+        tableData3: [{
+          date: '2016-05-03',
+          name: '1',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-02',
+          name: '2',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-04',
+          name: '3',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-01',
+          name: '4',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-08',
+          name: '5',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-06',
+          name: '6',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-07',
+          name: '7',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }],
+        multipleSelection: [],
+        // tree
         data2: [{
           id: 1,
           label: 'root',
@@ -114,6 +210,12 @@
       }
     },
     methods: {
+      handleSizeChange (val) {
+        console.log(`每页 ${val} 条`)
+      },
+      handleCurrentChange (val) {
+        console.log(`当前页: ${val}`)
+      },
       handleSelect (key, keyPath) {
         console.log(key, keyPath)
       },
@@ -125,6 +227,19 @@
       filterNode (value, data) {
         if (!value) return true
         return data.label.indexOf(value) !== -1
+      },
+      // 内容
+      toggleSelection (rows) {
+        if (rows) {
+          rows.forEach(row => {
+            this.$refs.multipleTable.toggleRowSelection(row)
+          })
+        } else {
+          this.$refs.multipleTable.clearSelection()
+        }
+      },
+      handleSelectionChange (val) {
+        this.multipleSelection = val
       }
     }
   }
@@ -153,7 +268,7 @@
     background-color: #D3DCE6;
     color: #333;
     text-align: center;
-    line-height: 600px;
+//    line-height: 60px;
   }
   
   .el-main {
@@ -178,7 +293,7 @@
   }
 
   #root {
-    width: 40%;
+    width: 60%;
     padding: 0;
     background-color: #fff;
     margin: auto;
@@ -191,4 +306,19 @@
   .aaa {
       border-radius: 8px;
   }
+
+  .tree {
+      top : 0;
+      heigth: 10px;
+      font-size: 10px;
+      font-weight:bold;
+  }
+.el-input {
+    position: relative;
+    font-size: 14px;
+    display: inline-block;
+    width: 100%;
+    line-height: 50px;
+    border-radius: 10px;
+}
 </style>
