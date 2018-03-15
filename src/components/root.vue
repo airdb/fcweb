@@ -1,6 +1,9 @@
 <template>
   <el-container>
-  <el-header height=100px>
+  <!--
+  <el-header height=100px direction="horizontal">
+    <el-aside class="el-aside" >
+    </el-aside>
     <div id="root" class="bbb" >
       <el-menu :default-active="activeIndex" background-color="#ddd" active-text-color="#eee" mode="horizontal" class="aaa" @select="handleSelect">
         <el-menu-item index="1">Home</el-menu-item>
@@ -12,9 +15,11 @@
       </el-menu>
     </div>
   </el-header>
+  -->
 
   <el-container>
     <el-aside class="el-aside" >
+    <img src="https://www.airdb.com/logo/wego.png">
       <div class="tree">
       <el-input class="source" placeholder="Filter" v-model="filterText">
       </el-input>
@@ -26,10 +31,12 @@
       <el-tree class="filter-tree" :data="data2" :props="defaultProps" default-expand-all :filter-node-method="filterNode" ref="tree2">
         <span class="custom-tree-node" slot-scope="{ node, data }">
           <span>{{ node.label }}</span>
+          <!--
           <span>
             <el-button type="text" size="mini" @click="() => append(data)"> Append </el-button>
             <el-button type="text" size="mini" @click="() => remove(node, data)"> Delete </el-button>
           </span>
+          -->
         </span>
       </el-tree>
 
@@ -38,6 +45,20 @@
 
     </el-aside>
     <el-main width="300px">
+
+    <el-header height=100px direction="horizontal">
+      <div id="root" class="bbb" >
+        <el-menu :default-active="activeIndex" background-color="#ddd" active-text-color="#eee" mode="horizontal" class="aaa" @select="handleSelect">
+          <el-menu-item index="1">Home</el-menu-item>
+          <el-menu-item index="2">Projects</el-menu-item>
+          <el-menu-item index="3">Services</el-menu-item>
+          <el-menu-item index="4">Downloads</el-menu-item>
+          <el-menu-item index="5"><a href="http://docs.airdb.com" target="_blank">Docs</a></el-menu-item>
+          <el-menu-item index="6">About</el-menu-item>
+        </el-menu>
+      </div>
+    </el-header>
+
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item>服务树</el-breadcrumb-item>
@@ -48,18 +69,14 @@
       <el-table ref="multipleTable" :data="tableData3" tooltip-effect="dark" style="width: 100%; line-height: 10px" @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55">
         </el-table-column>
-        <el-table-column prop="name" label="实例ID" width="80">
-        </el-table-column>
-        <el-table-column prop="serviceinstance" label="实例名" show-overflow-tooltip>
-        </el-table-column>
-        <el-table-column prop="mainport" label="服务端口" show-overflow-tooltip>
-        </el-table-column>
-        <el-table-column prop="workpath" label="部署路径" show-overflow-tooltip>
-        </el-table-column>
-        <el-table-column prop="status" label="状态" show-overflow-tooltip>
-        </el-table-column>
-        <el-table-column prop="tags" label="Key-Value标签" show-overflow-tooltip>
-        </el-table-column>
+        <el-table-column prop="name" label="实例ID" width="80"> </el-table-column>
+        <el-table-column prop="serviceinstance" label="实例名" show-overflow-tooltip> </el-table-column>
+        <el-table-column prop="servicetype" label="实例类型" show-overflow-tooltip> </el-table-column>
+        <el-table-column prop="innerip" label="IP" show-overflow-tooltip> </el-table-column>
+        <el-table-column prop="mainport" label="端口" show-overflow-tooltip> </el-table-column>
+        <el-table-column prop="workpath" label="部署路径" show-overflow-tooltip> </el-table-column>
+        <el-table-column prop="status" label="状态" show-overflow-tooltip> </el-table-column>
+        <el-table-column prop="tags" label="Key-Value标签" show-overflow-tooltip> </el-table-column>
         <el-table-column label="变更时间" width="120">
           <template slot-scope="scope">{{ scope.row.date }}</template>
         </el-table-column>
@@ -82,13 +99,13 @@
       </div>
 
 
+     <!--
       <el-carousel :interval="4000" type="card" height="60px">
         <el-carousel-item v-for="item in 6" :key="item">
           <h3>{{ item }}</h3>
         </el-carousel-item>
       </el-carousel>
 
-     <!--
       <el-tag>标签一</el-tag>
       <el-tag type="success">标签二</el-tag>
       <el-tag type="info">标签三</el-tag>
@@ -124,74 +141,88 @@
         tableData3: [{
           date: '2016-05-03',
           name: '1',
+          innerip: '10.10.10.10',
           mainport: '80;8080',
           workpath: '/srv/apiweb/',
           status: 'online',
           tags: 'foo=air;bar=db',
+          servicetype: 'machine',
           serviceinstance: 'instance1.hd.cmdb.airdb.io.'
         }, {
           date: '2016-05-02',
           name: '2',
+          innerip: '10.10.10.10',
           mainport: '80',
           workpath: '/srv/apiweb/',
           status: 'ready',
           tags: 'foo=air;bar=db',
+          servicetype: 'vm',
           serviceinstance: 'instance2.hd.cmdb.airdb.io.'
         }, {
           date: '2016-05-04',
           name: '3',
+          innerip: '10.10.10.10',
           mainport: '80',
           workpath: '/srv/apiweb/',
           status: 'breakdown',
           tags: 'foo=air;bar=db',
+          servicetype: 'vm',
           serviceinstance: 'instance3.hd.cmdb.airdb.io.'
         }, {
           date: '2016-05-01',
           name: '4',
+          innerip: '10.10.10.10',
           mainport: '80',
           workpath: '/srv/apiweb/',
           status: 'offline',
           tags: 'foo=air;bar=db',
+          servicetype: 'docker',
           serviceinstance: 'instance4.hd.cmdb.airdb.io.'
         }, {
           date: '2016-05-08',
           name: '5',
+          innerip: '10.10.10.10',
           mainport: '80',
           workpath: '/srv/apiweb/',
           status: 'disable',
           tags: 'foo=air;bar=db',
+          servicetype: 'machine',
           serviceinstance: 'instance5.hd.cmdb.airdb.io.'
         }, {
           date: '2016-05-06',
           name: '6',
+          innerip: '10.10.10.10',
           mainport: '80',
           workpath: '/srv/apiweb/',
           status: 'online',
           tags: 'foo=air;bar=db',
+          servicetype: 'docker',
           serviceinstance: 'instance6.hd.cmdb.airdb.io.'
         }, {
           date: '2016-05-07',
           name: '7',
+          innerip: '10.100.100.1',
           mainport: '80',
           workpath: '/srv/apiweb/',
           status: 'online',
           tags: 'foo=air;bar=db',
+          servicetype: 'docker',
           serviceinstance: 'instance7.hd.cmdb.airdb.io.'
         }],
         multipleSelection: [],
         // tree
         data2: [{
           id: 1,
-          label: 'root',
+          label: '创世节点',
           children: [{
             id: 3,
-            label: '二级 2-1 运维部',
+            label: '二级 2-1 亚洲',
             children: [{
               id: 4,
-              label: '三级 3-1-1'
+              label: '三级 3-1-1 日本'
             }, {
               id: 5,
-              label: '三级 3-1-2 CMDB系统',
+              label: '三级 3-1-2 中国大陆',
               disabled: false,
               children: [{
                 id: 6,
