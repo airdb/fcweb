@@ -48,14 +48,22 @@
       <el-table ref="multipleTable" :data="tableData3" tooltip-effect="dark" style="width: 100%; line-height: 10px" @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55">
         </el-table-column>
-        <el-table-column label="日期" width="120">
+        <el-table-column prop="name" label="实例ID" width="80">
+        </el-table-column>
+        <el-table-column prop="serviceinstance" label="实例名" show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column prop="mainport" label="服务端口" show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column prop="workpath" label="部署路径" show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column prop="status" label="状态" show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column prop="tags" label="Key-Value标签" show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column label="变更时间" width="120">
           <template slot-scope="scope">{{ scope.row.date }}</template>
         </el-table-column>
-        <el-table-column prop="name" label="实例ID" width="120">
-        </el-table-column>
-        <el-table-column prop="address" label="实例名" show-overflow-tooltip>
-        </el-table-column>
-        <el-table-column label="操作">
+        <el-table-column label="操作" fixed="right" >
           <template slot-scope="scope">
             <el-button
               size="mini"
@@ -116,31 +124,59 @@
         tableData3: [{
           date: '2016-05-03',
           name: '1',
-          address: 'instance1.hd.cmdb.airdb.io.'
+          mainport: '80;8080',
+          workpath: '/srv/apiweb/',
+          status: 'online',
+          tags: 'foo=air;bar=db',
+          serviceinstance: 'instance1.hd.cmdb.airdb.io.'
         }, {
           date: '2016-05-02',
           name: '2',
-          address: 'instance2.hd.cmdb.airdb.io.'
+          mainport: '80',
+          workpath: '/srv/apiweb/',
+          status: 'ready',
+          tags: 'foo=air;bar=db',
+          serviceinstance: 'instance2.hd.cmdb.airdb.io.'
         }, {
           date: '2016-05-04',
           name: '3',
-          address: 'instance3.hd.cmdb.airdb.io.'
+          mainport: '80',
+          workpath: '/srv/apiweb/',
+          status: 'breakdown',
+          tags: 'foo=air;bar=db',
+          serviceinstance: 'instance3.hd.cmdb.airdb.io.'
         }, {
           date: '2016-05-01',
           name: '4',
-          address: 'instance4.hd.cmdb.airdb.io.'
+          mainport: '80',
+          workpath: '/srv/apiweb/',
+          status: 'offline',
+          tags: 'foo=air;bar=db',
+          serviceinstance: 'instance4.hd.cmdb.airdb.io.'
         }, {
           date: '2016-05-08',
           name: '5',
-          address: 'instance5.hd.cmdb.airdb.io.'
+          mainport: '80',
+          workpath: '/srv/apiweb/',
+          status: 'disable',
+          tags: 'foo=air;bar=db',
+          serviceinstance: 'instance5.hd.cmdb.airdb.io.'
         }, {
           date: '2016-05-06',
           name: '6',
-          address: 'instance6.hd.cmdb.airdb.io.'
+          mainport: '80',
+          workpath: '/srv/apiweb/',
+          status: 'online',
+          tags: 'foo=air;bar=db',
+          serviceinstance: 'instance6.hd.cmdb.airdb.io.'
         }, {
           date: '2016-05-07',
           name: '7',
-          address: 'instance7.hd.cmdb.airdb.io.'
+          mainport: '80',
+          workpath: '/srv/apiweb/',
+          status: 'online',
+          tags: 'foo=air;bar=db',
+          serviceinstance: 'instance7.hd.cmdb.airdb.io.'
         }],
         multipleSelection: [],
         // tree
@@ -149,21 +185,21 @@
           label: 'root',
           children: [{
             id: 3,
-            label: '二级 2-1',
+            label: '二级 2-1 运维部',
             children: [{
               id: 4,
               label: '三级 3-1-1'
             }, {
               id: 5,
-              label: '三级 3-1-2',
+              label: '三级 3-1-2 CMDB系统',
               disabled: false,
               children: [{
                 id: 6,
-                label: '四级 4-1-2',
+                label: '四级 4-1-2 华东',
                 disabled: false,
                 children: [{
                   id: 7,
-                  label: '五级 5-1-1',
+                  label: '五级 5-1-1 华东A区',
                   disabled: false
                 }]
               }]
@@ -241,7 +277,7 @@
   .el-main {
     background-color: #E9EEF3;
     color: #333;
-    text-align: center;
+    text-align: left;
     line-height: 600px;
   }
   
