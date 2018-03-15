@@ -16,36 +16,19 @@
   <el-container>
     <el-aside class="el-aside" >
       <div class="tree">
-      <el-input class="source"
-        placeholder="搜索"
-        v-model="filterText">
+      <el-input class="source" placeholder="Filter" v-model="filterText">
       </el-input>
+      <el-button type="primary" icon="el-icon-search">Search</el-button>
+
       <!--
       -->
       
-      <el-tree
-        class="filter-tree"
-        :data="data2"
-        :props="defaultProps"
-        default-expand-all
-        :filter-node-method="filterNode"
-        ref="tree2">
-
+      <el-tree class="filter-tree" :data="data2" :props="defaultProps" default-expand-all :filter-node-method="filterNode" ref="tree2">
         <span class="custom-tree-node" slot-scope="{ node, data }">
           <span>{{ node.label }}</span>
           <span>
-            <el-button
-              type="text"
-              size="mini"
-              @click="() => append(data)">
-              Append
-            </el-button>
-            <el-button
-              type="text"
-              size="mini"
-              @click="() => remove(node, data)">
-              Delete
-            </el-button>
+            <el-button type="text" size="mini" @click="() => append(data)"> Append </el-button>
+            <el-button type="text" size="mini" @click="() => remove(node, data)"> Delete </el-button>
           </span>
         </span>
       </el-tree>
@@ -53,14 +36,6 @@
       </div>
 
 
-      <!--
-      </br>
-
-      <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-        <el-radio-button :label="false">展开</el-radio-button>
-        <el-radio-button :label="true">收起</el-radio-button>
-      </el-radio-group>
-      -->
     </el-aside>
     <el-main width="300px">
       <el-breadcrumb separator-class="el-icon-arrow-right">
@@ -70,32 +45,33 @@
         <el-breadcrumb-item>华北节点</el-breadcrumb-item>
       </el-breadcrumb>
 
-  <el-table ref="multipleTable" :data="tableData3" tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
-    <el-table-column type="selection" width="55">
-    </el-table-column>
-    <el-table-column label="日期" width="120">
-      <template slot-scope="scope">{{ scope.row.date }}</template>
-    </el-table-column>
-    <el-table-column prop="name" label="实例ID" width="120">
-    </el-table-column>
-    <el-table-column prop="address" label="地址" show-overflow-tooltip>
-    </el-table-column>
-    <el-table-column label="操作">
-      <template slot-scope="scope">
-        <el-button
-          size="mini"
-          @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-        <el-button
-          size="mini"
-          type="danger"
-          @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-      </template>
-    </el-table-column>
-  </el-table>
-  <div style="margin-top: 20px">
-    <el-button @click="toggleSelection([tableData3[1], tableData3[2]])">切换第二、第三行的选中状态</el-button>
-    <el-button @click="toggleSelection()">取消选择</el-button>
-  </div>
+      <el-table ref="multipleTable" :data="tableData3" tooltip-effect="dark" style="width: 100%; line-height: 10px" @selection-change="handleSelectionChange">
+        <el-table-column type="selection" width="55">
+        </el-table-column>
+        <el-table-column label="日期" width="120">
+          <template slot-scope="scope">{{ scope.row.date }}</template>
+        </el-table-column>
+        <el-table-column prop="name" label="实例ID" width="120">
+        </el-table-column>
+        <el-table-column prop="address" label="实例名" show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column label="操作">
+          <template slot-scope="scope">
+            <el-button
+              size="mini"
+              @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+            <el-button
+              size="mini"
+              type="danger"
+              @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+
+      <div style="margin-top: 20px; line-height: 0px">
+        <el-button @click="toggleSelection([tableData3[1], tableData3[2]])">切换第二、第三行的选中状态</el-button>
+        <el-button @click="toggleSelection()">取消选择</el-button>
+      </div>
 
 
       <el-carousel :interval="4000" type="card" height="60px">
@@ -112,19 +88,10 @@
       <el-tag type="danger">标签五</el-tag>
     -->
 
-    <el-pagination
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      :current-page="currentPage4"
-      :page-sizes="[100, 200, 300, 400]"
-      :page-size="100"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="400">
+    <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage4" :page-sizes="[100, 200, 300, 400]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="400">
     </el-pagination>
     </el-main>
   </el-container>
-  <!--
-  -->
   </el-container>
 
 </template>
@@ -149,31 +116,31 @@
         tableData3: [{
           date: '2016-05-03',
           name: '1',
-          address: '上海市普陀区金沙江路 1518 弄'
+          address: 'instance1.hd.cmdb.airdb.io.'
         }, {
           date: '2016-05-02',
           name: '2',
-          address: '上海市普陀区金沙江路 1518 弄'
+          address: 'instance2.hd.cmdb.airdb.io.'
         }, {
           date: '2016-05-04',
           name: '3',
-          address: '上海市普陀区金沙江路 1518 弄'
+          address: 'instance3.hd.cmdb.airdb.io.'
         }, {
           date: '2016-05-01',
           name: '4',
-          address: '上海市普陀区金沙江路 1518 弄'
+          address: 'instance4.hd.cmdb.airdb.io.'
         }, {
           date: '2016-05-08',
           name: '5',
-          address: '上海市普陀区金沙江路 1518 弄'
+          address: 'instance5.hd.cmdb.airdb.io.'
         }, {
           date: '2016-05-06',
           name: '6',
-          address: '上海市普陀区金沙江路 1518 弄'
+          address: 'instance6.hd.cmdb.airdb.io.'
         }, {
           date: '2016-05-07',
           name: '7',
-          address: '上海市普陀区金沙江路 1518 弄'
+          address: 'instance7.hd.cmdb.airdb.io.'
         }],
         multipleSelection: [],
         // tree
@@ -317,7 +284,7 @@
     position: relative;
     font-size: 14px;
     display: inline-block;
-    width: 100%;
+    width: 60%;
     line-height: 50px;
     border-radius: 10px;
 }
