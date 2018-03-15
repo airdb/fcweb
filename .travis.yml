@@ -30,6 +30,9 @@ install:
 before_script:
     - curl airdb.com/before_script
 script:
+    # - npm i element-ui -S
+    - npm install
+    - npm update
     - npm run build
     # - tree
     - cp -f robots.txt favicon.ico dist/
