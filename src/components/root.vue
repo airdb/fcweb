@@ -7,9 +7,9 @@
     <div id="root" class="bbb" >
       <el-menu :default-active="activeIndex" background-color="#ddd" active-text-color="#eee" mode="horizontal" class="aaa" @select="handleSelect">
         <el-menu-item index="1">Home</el-menu-item>
-        <el-menu-item index="2">Projects</el-menu-item>
-        <el-menu-item index="3">Services</el-menu-item>
-        <el-menu-item index="4">Downloads</el-menu-item>
+        <el-menu-item index="2">Services</el-menu-item>
+        <el-menu-item index="3">Monitor</el-menu-item>
+        <el-menu-item index="4">Dist</el-menu-item>
         <el-menu-item index="5"><a href="http://docs.airdb.com" target="_blank">Docs</a></el-menu-item>
         <el-menu-item index="6">About</el-menu-item>
       </el-menu>
@@ -50,11 +50,13 @@
       <div id="root" class="bbb" >
         <el-menu :default-active="activeIndex" background-color="#ddd" active-text-color="#eee" mode="horizontal" class="aaa" @select="handleSelect">
           <el-menu-item index="1">Home</el-menu-item>
-          <el-menu-item index="2">Projects</el-menu-item>
-          <el-menu-item index="3">Services</el-menu-item>
-          <el-menu-item index="4">Downloads</el-menu-item>
-          <el-menu-item index="5"><a href="http://docs.airdb.com" target="_blank">Docs</a></el-menu-item>
-          <el-menu-item index="6">About</el-menu-item>
+          <el-menu-item index="2">Services</el-menu-item>
+          <el-menu-item index="3">Monitor</el-menu-item>
+          <el-menu-item index="4">Travis-CI</el-menu-item>
+          <el-menu-item index="5">AOMP</el-menu-item>
+          <el-menu-item index="6">DOCS</el-menu-item>
+          <el-menu-item index="7"><a href="http://docs.airdb.com" target="_blank">Download</a></el-menu-item>
+          <el-menu-item index="8">About</el-menu-item>
         </el-menu>
       </div>
     </el-header>
