@@ -9,6 +9,8 @@ import navmenu from '@/components/navmenu'
 import signin from '@/components/signin'
 import signup from '@/components/signup'
 import root from '@/components/root'
+import home from '@/components/home'
+import bbs from '@/components/bbs'
 import Main from '@/components/Main'
 
 Vue.use(Router)
@@ -20,9 +22,25 @@ export default new Router({
       path: '/',
       name: 'root',
       meta: {
+        title: 'Home | airdb.com'
+      },
+      component: home
+    },
+    {
+      path: '/servicetree',
+      name: 'root',
+      meta: {
         title: 'root | airdb.com'
       },
       component: root
+    },
+    {
+      path: '/bbs',
+      name: 'bbs',
+      meta: {
+        title: 'bbs | airdb.com'
+      },
+      component: bbs
     },
     {
       path: '/test',

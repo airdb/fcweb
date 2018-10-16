@@ -8,6 +8,7 @@
   </div>
 </template>
 
+<script src="https://rescdn.qqmail.com/node/ww/wwopenmng/js/sso/wwLogin-1.0.0.js"></script>
 <script>
 export default {
   name: 'app'
