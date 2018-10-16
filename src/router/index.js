@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import test from '@/components/test'
 import transfer from '@/components/transfer'
 import tree from '@/components/tree'
@@ -18,101 +19,17 @@ Vue.use(Router)
 export default new Router({
 //  mode: 'history',
   routes: [
-    {
-      path: '/',
-      name: 'root',
-      meta: {
-        title: 'Home | airdb.com'
-      },
-      component: home
-    },
-    {
-      path: '/servicetree',
-      name: 'root',
-      meta: {
-        title: 'root | airdb.com'
-      },
-      component: root
-    },
-    {
-      path: '/bbs',
-      name: 'bbs',
-      meta: {
-        title: 'bbs | airdb.com'
-      },
-      component: bbs
-    },
-    {
-      path: '/test',
-      name: 'test',
-      meta: {
-        title: 'Test | airdb.com'
-      },
-      component: test
-    },
-    {
-      path: '/tree',
-      name: 'Hello Ztree',
-      meta: {
-        title: 'Tree | airdb.com'
-      },
-      component: tree
-    },
-    {
-      path: '/newtree',
-      name: 'newtree',
-      meta: {
-        title: 'New Tree | airdb.com'
-      },
-      component: newtree
-    },
-    {
-      path: '/navmenu',
-      name: 'Hello nav menu',
-      meta: {
-        title: 'nav menu| airdb.com'
-      },
-      component: navmenu
-    },
-    {
-      path: '/signin',
-      name: 'signin',
-      meta: {
-        title: 'signin | airdb.com'
-      },
-      component: signin
-    },
-    {
-      path: '/signup',
-      name: 'signup',
-      meta: {
-        title: 'signup | airdb.com'
-      },
-      component: signup
-    },
-    {
-      path: '/login',
-      name: 'login',
-      meta: {
-        title: 'Sign in to airdb | airdb.com'
-      },
-      component: login
-    },
-    {
-      path: '/transfer',
-      name: 'transfer',
-      meta: {
-        title: 'transfer | airdb.com'
-      },
-      component: transfer
-    },
-    {
-      path: '/signout',
-      name: 'signout',
-      meta: {
-        title: 'signout | airdb.com'
-      },
-      component: Main
-    }
+    { meta: { title: 'Home     | airdb.com' }, path: '/', name: 'root', component: home },
+    { meta: { title: 'root     | airdb.com' }, path: '/servicetree', name: 'root', component: root },
+    { meta: { title: 'bbs      | airdb.com' }, path: '/bbs', name: 'bbs', component: bbs },
+    { meta: { title: 'Test     | airdb.com' }, path: '/test', name: 'test', component: test },
+    { meta: { title: 'Tree     | airdb.com' }, path: '/tree', name: 'Hello Ztree', component: tree },
+    { meta: { title: 'New Tree | airdb.com' }, path: '/newtree', name: 'newtree', component: newtree },
+    { meta: { title: 'nav menu | airdb.com' }, path: '/navmenu', name: 'Hello nav menu', component: navmenu },
+    { meta: { title: 'signin   | airdb.com' }, path: '/signin', name: 'signin', component: signin },
+    { meta: { title: 'signup   | airdb.com' }, path: '/signup', name: 'signup', component: signup },
+    { meta: { title: 'Sign in  | airdb.com' }, path: '/login', name: 'login', component: login },
+    { meta: { title: 'transfer | airdb.com' }, path: '/transfer', name: 'transfer', component: transfer },
+    { meta: { title: 'signout  | airdb.com' }, path: '/signout', name: 'signout', component: Main }
   ]
 })

@@ -1,7 +1,7 @@
 # fcweb
 [![Build Status](https://travis-ci.org/airdb/fcweb.svg?branch=master)](https://travis-ci.org/airdb/fcweb.svg?branch=master)
 
-> A Vue.js project
+> A Vue Website
 
 ## Build Setup
 
