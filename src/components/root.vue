@@ -1,73 +1,46 @@
 <template>
   <el-container>
-  <!--
-  <el-header height=100px direction="horizontal">
-    <el-aside class="el-aside" >
-    </el-aside>
-    <div id="root" class="bbb" >
-      <el-menu :default-active="activeIndex" background-color="#ddd" active-text-color="#eee" mode="horizontal" class="aaa" @select="handleSelect">
-        <el-menu-item index="1">Home</el-menu-item>
-        <el-menu-item index="2">Services</el-menu-item>
-        <el-menu-item index="3">Monitor</el-menu-item>
-        <el-menu-item index="4">Dist</el-menu-item>
-        <el-menu-item index="5"><a href="http://docs.airdb.com" target="_blank">Docs</a></el-menu-item>
-        <el-menu-item index="6">About</el-menu-item>
-      </el-menu>
-    </div>
-  </el-header>
-  -->
-
-  <el-container>
-    <el-aside class="el-aside" >
-    <img src="https://www.airdb.com/logo/wego.png">
+    <!-- 左侧全为aside -->
+    <el-aside class="el-aside"  width="320px" >
+      <img src="/static/images/logo/wego.png">
       <div class="tree">
-      <el-input class="source" placeholder="Filter" v-model="filterText">
-      </el-input>
-      <el-button type="primary" icon="el-icon-search">Search</el-button>
-
-      <!--
-      -->
-      
-      <el-tree class="filter-tree" :data="data2" :props="defaultProps" default-expand-all :filter-node-method="filterNode" ref="tree2">
-        <span class="custom-tree-node" slot-scope="{ node, data }">
-          <span>{{ node.label }}</span>
-          <!--
-          <span>
-            <el-button type="text" size="mini" @click="() => append(data)"> Append </el-button>
-            <el-button type="text" size="mini" @click="() => remove(node, data)"> Delete </el-button>
+        <el-input class="source" placeholder="Filter" v-model="filterText">
+        </el-input>
+        <el-button type="primary" icon="el-icon-search">Search</el-button>
+        <el-tree class="filter-tree" :data="data2" :props="defaultProps" default-expand-all :filter-node-method="filterNode" ref="tree2">
+          <span class="custom-tree-node" slot-scope="{ node, data }">
+            <span>{{ node.label }}</span>
           </span>
-          -->
-        </span>
-      </el-tree>
-
+        </el-tree>
       </div>
-
-
     </el-aside>
-    <el-main width="300px">
 
-    <el-header height=100px direction="horizontal">
-      <div id="root" class="bbb" >
-        <el-menu :default-active="activeIndex" background-color="#ddd" active-text-color="#eee" mode="horizontal" class="aaa" @select="handleSelect">
-          <el-menu-item index="1">Home</el-menu-item>
-          <el-menu-item index="2">Services</el-menu-item>
-          <el-menu-item index="3">Monitor</el-menu-item>
-          <el-menu-item index="4">Travis-CI</el-menu-item>
-          <el-menu-item index="5">AOMP</el-menu-item>
-          <el-menu-item index="6">DOCS</el-menu-item>
-          <el-menu-item index="7"><a href="http://docs.airdb.com" target="_blank">Download</a></el-menu-item>
-          <el-menu-item index="8">About</el-menu-item>
-        </el-menu>
-      </div>
-    </el-header>
+    
+    <!-- 右侧全为container-->
+    <el-container>
+      <el-header height=100px direction="horizontal">
+        <div id="root" class="bbb" >
+          <el-menu :default-active="activeIndex" background-color="#ddd" active-text-color="#eee" mode="horizontal" class="aaa" @select="handleSelect">
+            <el-menu-item index="1">Home</el-menu-item>
+            <el-menu-item index="2">Services</el-menu-item>
+            <el-menu-item index="3">Monitor</el-menu-item>
+            <el-menu-item index="4">Travis-CI</el-menu-item>
+            <el-menu-item index="5">Depoly</el-menu-item>
+            <el-menu-item index="7">About</el-menu-item>
+            <el-menu-item index="8">
+              <el-button type="primary" icon="el-icon-circle-plus">添加</el-button>
+            </el-menu-item>
+          </el-menu>
+        </div>
+      </el-header>
 
+      <el-main>
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item>服务树</el-breadcrumb-item>
         <el-breadcrumb-item>api-web</el-breadcrumb-item>
         <el-breadcrumb-item>华北节点</el-breadcrumb-item>
       </el-breadcrumb>
-
       <el-table ref="multipleTable" :data="tableData3" tooltip-effect="dark" style="width: 100%; line-height: 10px" @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55">
         </el-table-column>
@@ -94,34 +67,24 @@
           </template>
         </el-table-column>
       </el-table>
-
-      <div style="margin-top: 20px; line-height: 0px">
-        <el-button @click="toggleSelection([tableData3[1], tableData3[2]])">切换第二、第三行的选中状态</el-button>
-        <el-button @click="toggleSelection()">取消选择</el-button>
-      </div>
-
-
-     <!--
-      <el-carousel :interval="4000" type="card" height="60px">
-        <el-carousel-item v-for="item in 6" :key="item">
-          <h3>{{ item }}</h3>
-        </el-carousel-item>
-      </el-carousel>
-
-      <el-tag>标签一</el-tag>
-      <el-tag type="success">标签二</el-tag>
-      <el-tag type="info">标签三</el-tag>
-      <el-tag type="warning">标签四</el-tag>
-      <el-tag type="danger">标签五</el-tag>
-    -->
-
-    <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage4" :page-sizes="[100, 200, 300, 400]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="400">
-    </el-pagination>
-    </el-main>
+      </el-main>
+      <el-footer>
+        <div class="block">
+          <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page="currentPage4"
+            :page-sizes="[100, 200, 300, 400]"
+            :page-size="100"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="400">
+          </el-pagination>
+        </div>
+      </el-footer>
+    </el-container>
   </el-container>
-  </el-container>
-
 </template>
+
 
 <script>
   export default {
@@ -284,7 +247,7 @@
 <style>
   .el-header, {
     width: 100%;
-    align: center;
+    align: left;
     background-color: #E9EEF3;
     color: #333;
     text-align: center;
@@ -293,11 +256,11 @@
 
   .el-footer {
     width: 100%;
-    align: center;
-    background-color: green;
+    background-color: #E9EEF3;
     color: #333;
-    text-align: center;
-    line-height: 60px;
+    vertical-align: top;
+    text-align: right;
+//    line-height: 60px;
   }
   
   .el-aside {
@@ -310,12 +273,12 @@
   .el-main {
     background-color: #E9EEF3;
     color: #333;
-    text-align: left;
-    line-height: 600px;
+   // text-align: left;
+//    line-height: 600px;
   }
   
   body > .el-container {
-    margin-bottom: 40px;
+     margin-bottom: 40px;
   }
   
   .el-menu-item {
@@ -329,11 +292,10 @@
   }
 
   #root {
-    width: 60%;
+    width: 100%;
     padding: 0;
     background-color: #fff;
-    margin: auto;
-    top: 0;
+    // margin:left;
     left: 0;
     right: 0;
     bottom: 0;
@@ -346,7 +308,7 @@
   .tree {
       top : 0;
       heigth: 10px;
-      font-size: 10px;
+      font-size: 20px;
       font-weight:bold;
   }
 .el-input {

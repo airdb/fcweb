@@ -1,10 +1,9 @@
 <template>
-  <el-transfer
-    v-model="value3"
-    filterable
-    :left-default-checked="[2, 3]"
-    :right-default-checked="[1]"
-    :render-content="renderFunc"
+  <el-transfer filterable 
+    v-model="value3" 
+    :left-default-checked="[2, 3]" 
+    :right-default-checked="[1]" 
+    :render-content="xrenderFunc"
     :titles="['Source', 'Target']"
     :button-texts="['到左边', '到右边']"
     :format="{
