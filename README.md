@@ -5,6 +5,12 @@
 
 ## Build Setup
 
+## Step1: install Bootstrap
+https://getbootstrap.com/docs
+download bootstrap to /static/ 
+
+https://github.com/twbs/bootstrap/releases/download/v4.1.3/bootstrap-4.1.3-dist.zip
+
 ``` bash
 # install dependencies
 npm install

@@ -10,8 +10,8 @@ import navmenu from '@/components/navmenu'
 import signin from '@/components/signin'
 import signup from '@/components/signup'
 import root from '@/components/root'
-import home from '@/components/home'
-import bbs from '@/components/bbs'
+import home from '@/views/home'
+import bbs from '@/views/bbs'
 import Main from '@/components/Main'
 
 Vue.use(Router)
@@ -20,7 +20,7 @@ export default new Router({
 //  mode: 'history',
   routes: [
     { meta: { title: 'Home     | airdb.com' }, path: '/', name: 'root', component: home },
-    { meta: { title: 'root     | airdb.com' }, path: '/servicetree', name: 'root', component: root },
+    { meta: { title: 'root     | airdb.com' }, path: '/servicetree', name: 'servicetree', component: root },
     { meta: { title: 'bbs      | airdb.com' }, path: '/bbs', name: 'bbs', component: bbs },
     { meta: { title: 'Test     | airdb.com' }, path: '/test', name: 'test', component: test },
     { meta: { title: 'Tree     | airdb.com' }, path: '/tree', name: 'Hello Ztree', component: tree },
