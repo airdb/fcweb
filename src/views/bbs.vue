@@ -1,21 +1,19 @@
 <template>
 <div>
-  <nav class="header navbar navbar-inverse navbar-static-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <div class="navbar-header navbar-left" >
-        <a href="" class="navbar-brand">宝贝回家</a>
-      </div>
+      <a href="" class="navbar-brand">宝贝回家</a>
       <!-- navbar-header end -->
       
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item" v-for="item in items">
             <a class="nav-link" :href="item.url" target="_blank">{{item.name}}</a>
           </li>
         </ul>
-        <form class="navbar-form navbar-right">
-          <input class="form-control" type="text" placeholder="Search">
-          <button class="btn" type="button">Search</button>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search">
+          <button class="btn btn-secondary my-2 my-sm-0" type="button">Search</button>
         </form>
       </div>
       <!-- navbar-collapse end -->
