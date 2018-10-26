@@ -22,10 +22,10 @@
   <!-- navbar end -->
 
   <main role="main">
-    <div class="jumbotron pb-3">
+    <div class="jumbotron pb-2 pt-0">
       <div class="container">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
+        <nav aria-label="breadcrumb" class="">
+          <ol class="breadcrumb border-bottom" style="font-size:20px;">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item"><a href="#">Library</a></li>
             <li class="breadcrumb-item active" aria-current="page">Data</li>
@@ -33,12 +33,12 @@
         </nav>
         <!-- nav end -->
 
-        <h2 class="display-3">宝贝回家论坛</h2>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <h2 class="display-4">宝贝回家论坛</h2>
+        <p class="pb-5">This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
         <!-- p end -->
         
         <div class="row">
-          <div class="col-9"> 
+          <div class="col-10"> 
             <nav>
               <ul class="pagination">
                 <li class="page-item disabled">
@@ -60,7 +60,7 @@
             <!-- nav end -->
           </div>
           <!-- col-9 end -->
-          <div class="col-3">
+          <div class="col-2 float-right">
             <a href="#" class="btn btn-primary btn-md" role="button">发表主题</a>
           </div>
           <!-- col-3 end -->
@@ -73,17 +73,23 @@
     <div class="container">
       <div class="card" v-for="item in items">
         <div class="card-body">
+          <img class="mr-3" src="../assets/img1.jpg" width="40px" height="40px">
           This is some text within a card body.
         </div>
       </div>
-      <div class="row" v-for="item in items">
-        <div class="col">
-          <div class="jumbotron">
-            {{item.name}}
-          </div>
+      <!-- card end -->
+      <div class="media py-3 border-bottom" v-for="item in items">
+        <img class="mr-3" src="../assets/img1.jpg" width="40px" height="40px">
+        <div class="media-body">
+          <h5 class="mt-0 text-primary">Media heading</h5>
+          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
         </div>
       </div>
-      <!-- row end -->
+      <!-- media end -->
+      <div class="jumbotron mb-1 p-3" v-for="item in items">
+        <img src="../assets/img1.jpg" width="40px" height="40px">
+        {{item.name}}
+      </div>
     </div>
     <!-- container end -->
   </main>
