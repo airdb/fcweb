@@ -3,6 +3,7 @@
     <router-link to="/servicetree"> 服务树 </router-link>
     <router-link to="/root"> 根目录 </router-link>
     <router-link to="/bbs"> BBS </router-link>
+    <router-link to="/forum"> 论坛 </router-link>
     <router-link to="/about"> About </router-link>
   </div>
 </template>
