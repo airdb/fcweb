@@ -11,7 +11,6 @@ import signin from '@/components/signin'
 import signup from '@/components/signup'
 import root from '@/components/root'
 import home from '@/views/home'
-import bbs from '@/views/bbs'
 import forum from '@/views/forum'
 import Main from '@/components/Main'
 
@@ -22,7 +21,6 @@ export default new Router({
   routes: [
     { meta: { title: 'Home     | airdb.com' }, path: '/', name: 'root', component: home },
     { meta: { title: 'root     | airdb.com' }, path: '/servicetree', name: 'servicetree', component: root },
-    { meta: { title: 'bbs      | airdb.com' }, path: '/bbs', name: 'bbs', component: bbs },
     { meta: { title: 'forum    | airdb.com' }, path: '/forum', name: 'forum', component: forum },
     { meta: { title: 'Test     | airdb.com' }, path: '/test', name: 'test', component: test },
     { meta: { title: 'Tree     | airdb.com' }, path: '/tree', name: 'Hello Ztree', component: tree },

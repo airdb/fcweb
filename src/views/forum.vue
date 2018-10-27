@@ -2,7 +2,8 @@
 <div>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a href="" class="navbar-brand">宝贝回家</a>      
+      <router-link to="/" class="navbar-brand">宝贝回家</router-link>
+
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item" v-for="item in items">
