@@ -1,16 +1,18 @@
 # fcweb
 [![Build Status](https://travis-ci.org/airdb/fcweb.svg?branch=master)](https://travis-ci.org/airdb/fcweb.svg?branch=master)
 
-> A Vue Website
+> Fcweb is A Vue Website Project. 
+> bootstrap 4 + vuejs + iview + fly
 
-## Build Setup
+# Build Setup
 
 ## Step1: install Bootstrap
+
 https://getbootstrap.com/docs
-download bootstrap to /static/ 
 
-https://github.com/twbs/bootstrap/releases/download/v4.1.3/bootstrap-4.1.3-dist.zip
+wget https://github.com/twbs/bootstrap/releases/download/v4.1.3/bootstrap-4.1.3-dist.zip -O static/
 
+## Step2: install & run
 ``` bash
 # install dependencies
 npm install
@@ -33,5 +35,3 @@ npm run e2e
 # run all tests
 npm test
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

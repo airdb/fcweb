@@ -2,18 +2,18 @@
 <div>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <router-link to="/home" class="navbar-brand">宝贝回家</router-link>
+      <router-link to="/" class="navbar-brand">{{website}}</router-link>
       
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item">
-            <router-link to="/servicetree" class="nav-link"> 服务树 </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/root" class="nav-link"> 根目录 </router-link>
-          </li>
-          <li class="nav-item">
             <router-link to="/forum" class="nav-link"> 论坛 </router-link>
+          </li>
+          <li class="nav-item">
+            <a href="https://github.com/bbhj/intro/projects/1" class="nav-link"> 项目地址 </a>
+          </li>
+          <li class="nav-item">
+            <router-link to="/servicetree" class="nav-link"> 服务树 </router-link>
           </li>
           <li class="nav-item">
             <router-link to="/about" class="nav-link"> About </router-link>
@@ -122,14 +122,12 @@
 export default {
   data () {
     return {
+      website: '网站首页',
       items: [
-        {name: '宝贝回家', url: 'http://yq.aliyun.com/'},
-        {name: '宝贝回家', url: 'http://yq.aliyun.com/'},
-        {name: '宝贝回家', url: 'http://yq.aliyun.com/'},
-        {name: '宝贝回家', url: 'http://yq.aliyun.com/'},
-        {name: '宝贝回家', url: 'http://yq.aliyun.com/'},
-        {name: '宝贝回家', url: 'http://yq.aliyun.com/'},
-        {name: '宝贝回家', url: 'http://yq.aliyun.com/'}
+        {name: '分类1', url: '/'},
+        {name: '分类2', url: '/'},
+        {name: '分类3', url: '/'},
+        {name: '分类4', url: '/'}
       ]
     }
   },
