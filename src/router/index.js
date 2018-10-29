@@ -12,6 +12,7 @@ import signup from '@/components/signup'
 import root from '@/components/root'
 import home from '@/views/home'
 import forum from '@/views/forum'
+import editor from '@/views/editor'
 import Main from '@/components/Main'
 
 Vue.use(Router)
@@ -22,6 +23,7 @@ export default new Router({
     { meta: { title: 'Home     | airdb.com' }, path: '/', name: 'root', component: home },
     { meta: { title: 'root     | airdb.com' }, path: '/servicetree', name: 'servicetree', component: root },
     { meta: { title: 'forum    | airdb.com' }, path: '/forum', name: 'forum', component: forum },
+    { meta: { title: 'editor   | airdb.com' }, path: '/editor', name: 'editor', component: editor },
     { meta: { title: 'Test     | airdb.com' }, path: '/test', name: 'test', component: test },
     { meta: { title: 'Tree     | airdb.com' }, path: '/tree', name: 'Hello Ztree', component: tree },
     { meta: { title: 'New Tree | airdb.com' }, path: '/newtree', name: 'newtree', component: newtree },

@@ -25,9 +25,8 @@
       <div class="container">
         <nav aria-label="breadcrumb" class="">
           <ol class="breadcrumb border-bottom" style="font-size:20px;">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Library</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Data</li>
+            <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
+            <li class="breadcrumb-item active" aria-current="page">Forum</li>
           </ol>
         </nav>
         <!-- nav end -->
@@ -60,7 +59,7 @@
           </div>
           <!-- col-9 end -->
           <div class="col-2 float-right">
-            <a href="#" class="btn btn-primary btn-md" role="button">发表主题</a>
+            <router-link to="/editor" class="btn btn-primary btn-md">发表主题</router-link>
           </div>
           <!-- col-3 end -->
         </div>
