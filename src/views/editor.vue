@@ -30,9 +30,27 @@
         </ol>
       </nav>
       <!-- nav end -->
-      <div class="editor">
+
+      <div class="d-felx pl-3">
+        <div class="font-weight-bold d-inline-block mr-3">发表主题</div>    
+        <div class="btn btn-outline-secondary btn-sm">发表</div>   
+        <div class="btn btn-outline-secondary btn-sm">预览</div> 
+      </div>
+      <!-- d-inline end -->
+
+      <!--div class="d-flex pl-3 pt-3">
+        <div class="d-inline-block mr-1">选择主题</div> 
+        <div class="">
+          <select name="selectAge" id="selectAge">   
+            <option v-for="(option, index) in options" :value="key">{{option}}</option>     
+          </select>
+        </div>
+      </div-->
+
+      <div class="pt-3">
         <Editor></Editor>
       </div>
+      <!-- editor end -->
     </div>
     <!-- container end -->
 
@@ -64,7 +82,8 @@ export default {
         {name: '分类4', url: '/'},
         {name: '分类5', url: '/'},
         {name: '分类6', url: '/'}
-      ]
+      ],
+      options: ['选项一', '选项二', '选项三', '选项四', '选项五']
     }
   },
   methods: {
