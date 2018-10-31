@@ -35,3 +35,8 @@ npm run e2e
 # run all tests
 npm test
 ```
+
+## Step3: install mavon-editor
+```bash
+npm install mavon-editor --save
+```

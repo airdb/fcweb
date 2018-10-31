@@ -9,6 +9,10 @@ import VueWechatTitle from 'vue-wechat-title'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+Vue.use(mavonEditor)
+
 import '../theme/index.css'
 import VueSession from 'vue-session'
 Vue.use(VueSession)

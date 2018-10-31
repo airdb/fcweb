@@ -59,7 +59,7 @@
           </div>
           <!-- col-9 end -->
           <div class="col-2 float-right">
-            <router-link to="/editor" class="btn btn-primary btn-md">发表主题</router-link>
+            <router-link to="/edit" class="btn btn-primary btn-md">发表主题</router-link>
           </div>
           <!-- col-3 end -->
         </div>
@@ -117,20 +117,6 @@
         <!-- media-body end -->
       </div>
       <!-- media end -->
-
-      <div class="card mb-1" v-for="item in items">
-        <div class="card-body">
-          <img class="mr-3" src="../assets/img1.jpg" width="40px" height="40px">
-          This is some text within a card body.
-        </div>
-      </div>
-      <!-- card end -->
-
-      <div class="jumbotron mb-1 p-3" v-for="item in items">
-        <img src="../assets/img1.jpg" width="40px" height="40px">
-        {{item.name}}
-      </div>
-      <!-- jumbotron end -->
 
     </div>
     <!-- container end -->

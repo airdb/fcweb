@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="main">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <router-link to="/" class="navbar-brand">{{website}}</router-link>
@@ -20,40 +20,25 @@
   </nav>  
   <!-- navbar end -->
 
-  <main role="main">
+  <div class="jumbotron p-0">
     <div class="container">
-      <nav aria-label="breadcrumb" class="">
+      <nav aria-label="breadcrumb">
         <ol class="breadcrumb border-bottom" style="font-size:20px;">
           <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
           <li class="breadcrumb-item"><router-link to="/forum">Forum</router-link></li>
-          <li class="breadcrumb-item active" aria-current="page">Edit</li>
+          <li class="breadcrumb-item active" aria-current="page">{{article.title}}</li>
         </ol>
       </nav>
       <!-- nav end -->
-
-      <div class="d-felx pl-3">
-        <div class="font-weight-bold d-inline-block mr-3">发表主题</div>    
-        <div class="btn btn-outline-secondary btn-sm">发表</div>   
-        <div class="btn btn-outline-secondary btn-sm">预览</div> 
-      </div>
-      <!-- d-inline end -->
-
-      <!--div class="d-flex pl-3 pt-3">
-        <div class="d-inline-block mr-1">选择主题</div> 
-        <div class="">
-          <select name="selectAge" id="selectAge">   
-            <option v-for="(option, index) in options" :value="key">{{option}}</option>     
-          </select>
-        </div>
-      </div-->
-
-      <div class="pt-3">
-        <Editor></Editor>
-      </div>
-      <!-- editor end -->
     </div>
     <!-- container end -->
+  </div>
+  <!-- jumbotron end -->
 
+  <main role="main">
+    <div class="container">
+    </div>
+    <!-- container end -->
   </main>
   <!-- main end -->
   
@@ -67,10 +52,8 @@
 </template>
 
 <script>
-import Editor from '@/components/Editor'
 export default {
   components: {
-    Editor
   },
   data () {
     return {
@@ -83,16 +66,17 @@ export default {
         {name: '分类5', url: '/'},
         {name: '分类6', url: '/'}
       ],
-      options: ['选项一', '选项二', '选项三', '选项四', '选项五']
+      article: {
+        title: 'myTitle',
+        content: 'abcdf',
+        author: 'MyCql',
+        date: '2018-9-9'
+      }
     }
   },
   methods: {
   },
   created () {
-    var E = window.wangEditor
-    var editor = new E('#editor')
-    // 或者 var editor = new E( document.getElementById('editor') )
-    editor.create()
   }
 }
 </script>
