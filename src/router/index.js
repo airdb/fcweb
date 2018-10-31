@@ -10,20 +10,30 @@ import navmenu from '@/components/navmenu'
 import signin from '@/components/signin'
 import signup from '@/components/signup'
 import root from '@/components/root'
-import home from '@/views/home'
-import forum from '@/views/forum'
-import edit from '@/views/edit'
 import Main from '@/components/Main'
+
+// home
+import home from '@/views/home'
+
+// forum
+import forum from '@/views/forum/forum'
+import edit from '@/views/forum/edit'
+import article from '@/views/forum/article'
 
 Vue.use(Router)
 
 export default new Router({
 //  mode: 'history',
   routes: [
+    // home
     { meta: { title: 'Home     | airdb.com' }, path: '/', name: 'root', component: home },
-    { meta: { title: 'root     | airdb.com' }, path: '/servicetree', name: 'servicetree', component: root },
+
+    // forum
     { meta: { title: 'forum    | airdb.com' }, path: '/forum', name: 'forum', component: forum },
-    { meta: { title: 'edit     | airdb.com' }, path: '/edit', name: 'edit', component: edit },
+    { meta: { title: 'edit     | airdb.com' }, path: '/forum/edit', name: 'edit', component: edit },
+    { meta: { title: 'article  | airdb.com' }, path: '/forum/article', name: 'article', component: article },
+
+    { meta: { title: 'root     | airdb.com' }, path: '/servicetree', name: 'servicetree', component: root },
     { meta: { title: 'Test     | airdb.com' }, path: '/test', name: 'test', component: test },
     { meta: { title: 'Tree     | airdb.com' }, path: '/tree', name: 'Hello Ztree', component: tree },
     { meta: { title: 'New Tree | airdb.com' }, path: '/newtree', name: 'newtree', component: newtree },

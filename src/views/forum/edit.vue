@@ -26,7 +26,7 @@
         <ol class="breadcrumb border-bottom" style="font-size:20px;">
           <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
           <li class="breadcrumb-item"><router-link to="/forum">Forum</router-link></li>
-          <li class="breadcrumb-item active" aria-current="page">{{article.title}}</li>
+          <li class="breadcrumb-item active" aria-current="page">Edit</li>
         </ol>
       </nav>
       <!-- nav end -->
@@ -37,8 +37,35 @@
 
   <main role="main">
     <div class="container">
+      
+
+      <div class="d-block">   
+        <div class="d-inline px-2 font-weight-bold">发表主题</div>
+        <div class="btn btn-primary btn-sm px-3">发表</div>
+      </div>
+      <!-- d-inline end -->
+
+      <!--div class="d-flex pl-3 pt-3">
+        <div class="d-inline-block mr-1">选择主题</div> 
+        <div class="">
+          <select name="selectAge" id="selectAge">   
+            <option v-for="(option, index) in options" :value="key">{{option}}</option>     
+          </select>
+        </div>
+      </div-->
+
+      <div class="py-3 d-block" style="height:800px">
+        <mavon-editor style="height:700px"
+          :boxShadow="false"
+          @save="$editorSave"
+          @imgAdd="$imgAdd" 
+          @imgDel="$imgDel">    
+      </mavon-editor>
+      </div>
+      <!-- editor end -->
     </div>
     <!-- container end -->
+
   </main>
   <!-- main end -->
   
@@ -57,6 +84,7 @@ export default {
   },
   data () {
     return {
+      value: '',
       website: '网站首页',
       items: [
         {name: '分类1', url: '/'},
@@ -65,18 +93,16 @@ export default {
         {name: '分类4', url: '/'},
         {name: '分类5', url: '/'},
         {name: '分类6', url: '/'}
-      ],
-      article: {
-        title: 'myTitle',
-        content: 'abcdf',
-        author: 'MyCql',
-        date: '2018-9-9'
-      }
+      ]
     }
   },
   methods: {
   },
   created () {
+    var E = window.wangEditor
+    var editor = new E('#editor')
+    // 或者 var editor = new E( document.getElementById('editor') )
+    editor.create()
   }
 }
 </script>
