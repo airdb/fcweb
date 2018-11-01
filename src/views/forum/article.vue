@@ -1,24 +1,6 @@
 <template>
 <div id="main">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <router-link to="/" class="navbar-brand">{{website}}</router-link>
-
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item" v-for="item in items">
-            <a class="nav-link" :href="item.url" target="_blank">{{item.name}}</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search">
-          <button class="btn btn-secondary my-2 my-sm-0" type="button">Search</button>
-        </form>
-      </div>
-      <!-- navbar-collapse end -->
-    </div>
-  </nav>  
-  <!-- navbar end -->
+  <head-er></head-er>
 
   <div class="jumbotron p-0 m-0">
     <div class="container">
@@ -45,51 +27,45 @@
         <div class="btn btn-primary btn-md px-5 float-right mr-2">回复主题</div>
       </div>
 
-      <div class="jumbotron row">
-        <div class="col-2 border-right">
-          <div class="d-inline-block bg-light rounded mb-3 p-2">
-            <p class="text-center text-secondary mb-0" style="font-size:10px">浏览 {{article.browseNum}}</p>
-          </div>
-          <div class="d-inline-block bg-light rounded mb-3 p-2">
-            <p class="text-center text-secondary mb-0" style="font-size:10px">回复 {{article.replyNum}}</p>
-          </div>
+      <div class="row bg-light">
+        <div class="col-1 py-2 border-right text-center text-secondary" style="font-size:15px">
+          浏览
+          {{article.browseNum}}
+        </div>
+        <div class="col-1 py-2 border-right text-center text-secondary" style="font-size:15px">
+          回复
+          {{article.replyNum}}
         </div>
         <div class="col-10 pl-3">
-          <div class="border-bottom bg-light font-weight-bold pl-3 py-2" style="font-size:25px">
+          <div class="font-weight-bold pl-2 py-2" style="font-size:25px">
             {{article.title}}
           </div>
         </div>
       </div>
       <!-- row end -->
+
+      <div class="row">
+        
+      </div>
     </div>
     <!-- container end -->
   </main>
   <!-- main end -->
   
-  <footer class="footer">
-    <div class="inner">
-      <h1>Hello, world!</h1>
-      <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-    </div>
-  </footer>
+  <foot-er></foot-er>
 </div>
 </template>
 
 <script>
+import headEr from '@/components/header'
+import footEr from '@/components/footer'
 export default {
   components: {
+    headEr,
+    footEr
   },
   data () {
     return {
-      website: '网站首页',
-      items: [
-        {name: '分类1', url: '/'},
-        {name: '分类2', url: '/'},
-        {name: '分类3', url: '/'},
-        {name: '分类4', url: '/'},
-        {name: '分类5', url: '/'},
-        {name: '分类6', url: '/'}
-      ],
       article: {
         title: 'myTitle',
         content: 'abcdf',
@@ -108,9 +84,4 @@ export default {
 </script>
 
 <style>
-.footer {
-  padding: 40px;
-  background: #373d41;
-  color: #9b9ea0;
-}
 </style>
