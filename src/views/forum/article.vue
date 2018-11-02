@@ -20,11 +20,12 @@
   <main role="main">
     <div class="container">
       <div class="pt-2 pb-3">
-        <div class="btn btn-outline-primary btn-md px-3"><<返回</div>
-        <div class="btn btn-outline-primary btn-md px-3">上一主题</div>
-        <div class="btn btn-outline-primary btn-md px-3">下一主题</div>
-        <div class="btn btn-outline-primary btn-md px-5 float-right">发表主题</div>
-        <div class="btn btn-primary btn-md px-5 float-right mr-2">回复主题</div>
+        <router-link to="/forum" class="btn btn-outline-primary btn-md px-3"><<返回</router-link>
+        <router-link to="" class="btn btn-outline-primary btn-md px-3">上一主题</router-link>
+        <router-link to="" class="btn btn-outline-primary btn-md px-3">下一主题</router-link>
+
+        <router-link to="/forum/edit" class="btn btn-primary btn-md px-5">发表主题</router-link>
+        <router-link to="/forum/edit" class="btn btn-primary btn-md px-5 mr-2">回复主题</router-link>
       </div>
 
       <div class="row bg-light">
@@ -32,21 +33,44 @@
           浏览
           {{article.browseNum}}
         </div>
+        <!-- col-1 end -->
         <div class="col-1 py-2 border-right text-center text-secondary" style="font-size:15px">
           回复
           {{article.replyNum}}
         </div>
+        <!-- col-1 end -->
         <div class="col-10 pl-3">
           <div class="font-weight-bold pl-2 py-2" style="font-size:25px">
             {{article.title}}
           </div>
         </div>
+        <!-- col-10 end -->
       </div>
       <!-- row end -->
 
-      <div class="row">
-        
+      <div class="row mt-1">
+        <div class="col-2 bg-light">
+          <div class="mt-3 border">
+            <img src="../../assets/img2.jpg" width="140px" height="140px">
+          </div>
+          <div class="text-center text-primary mt-2" style="font-size:20px">
+            {{article.author}}
+          </div>
+          <div class="text-left text-secondary mt-2 ml-3" style="font-size: 12px">
+            发帖数<span class="ml-5">{{article.postNum}}</span>
+            <br>
+            粉丝数<span class="ml-5">{{article.fansNum}}</span>
+          </div>
+        </div>
+        <!-- col-2 end -->
+        <div class="col-10">
+          <div class="mt-3 ml-2">
+            {{content}}
+          </div>
+        </div>
+        <!-- col-10 end -->
       </div>
+      <!-- row end -->
     </div>
     <!-- container end -->
   </main>
@@ -70,10 +94,13 @@ export default {
         title: 'myTitle',
         content: 'abcdf',
         author: 'MyCql',
+        fansNum: 2019,
+        postNum: 10000,
         date: '2018-9-9',
         browseNum: 2018,
         replyNum: 2018
-      }
+      },
+      content: 'asfdfas'
     }
   },
   methods: {
