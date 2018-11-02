@@ -28,6 +28,13 @@
       </div>
       <!-- navbar-collapse end -->
     </div>
+    <!-- container end -->
+
+    <div class="">
+      <router-link to="/login" class="btn btn-info btn-md"> 登陆 </router-link>
+      <router-link to="/signin" class="btn btn-info btn-md"> 注册 </router-link>
+    </div>
+    <!-- login end -->
   </nav>  
   <!-- navbar end -->
 </div>

@@ -24,7 +24,7 @@
         <router-link to="" class="btn btn-outline-primary btn-md px-3">上一主题</router-link>
         <router-link to="" class="btn btn-outline-primary btn-md px-3">下一主题</router-link>
 
-        <router-link to="/forum/edit" class="btn btn-primary btn-md px-5">发表主题</router-link>
+        <router-link to="/forum/edit" class="btn btn-primary btn-md px-5" style="margin-left:450px">发表主题</router-link>
         <router-link to="/forum/edit" class="btn btn-primary btn-md px-5 mr-2">回复主题</router-link>
       </div>
 
@@ -39,8 +39,8 @@
           {{article.replyNum}}
         </div>
         <!-- col-1 end -->
-        <div class="col-10 pl-3">
-          <div class="font-weight-bold pl-2 py-2" style="font-size:25px">
+        <div class="col-10">
+          <div class="font-weight-bold text-truncate pl-2 py-2" style="font-size:25px">
             {{article.title}}
           </div>
         </div>
@@ -48,11 +48,9 @@
       </div>
       <!-- row end -->
 
-      <div class="row mt-1">
+      <div class="row mt-1 border-bottom border-secondary" v-for="item, index in items" :key="index">
         <div class="col-2 bg-light">
-          <div class="mt-3 border">
-            <img src="../../assets/img2.jpg" width="140px" height="140px">
-          </div>
+          <img src="../../assets/img2.jpg" class="mt-3 border" width="160px" height="160px">
           <div class="text-center text-primary mt-2" style="font-size:20px">
             {{article.author}}
           </div>
@@ -64,13 +62,35 @@
         </div>
         <!-- col-2 end -->
         <div class="col-10">
-          <div class="mt-3 ml-2">
-            {{content}}
+          <div class="text-secondary py-2 border-bottom mb-1">
+            <span class="text-danger">楼主  </span>发表于：{{article.date}}
+            <span class="float-right">{{index+1}} 楼</span>
           </div>
+          <!-- header end -->
+
+          <div class="text-center">
+            <img src="../../assets/img4.jpeg" width="300px" height="300px">
+          </div>
+          <!-- content-img end -->
+          <div class="mt-3">
+            {{article.content}}
+          </div>
+          <!-- content-text end -->
+
+          <div class="my-5 text-center">
+            <router-link to="" class="btn btn-outline-primary btn-sm mr-2">收藏</router-link>
+            <router-link to="" class="btn btn-outline-primary btn-sm">关注</router-link>
+          </div>
+          <!-- footer end -->
         </div>
         <!-- col-10 end -->
       </div>
       <!-- row end -->
+
+      <div class="row my-2">
+        <div class="btn btn-outline-secondary btn-md" style="width:100%">下一页>></div>
+      </div>
+
     </div>
     <!-- container end -->
   </main>
@@ -91,16 +111,17 @@ export default {
   data () {
     return {
       article: {
-        title: 'myTitle',
-        content: 'abcdf',
+        title: '[男孩] 约1992年出生1998年9月被拐至湖南省岳阳市的张华寻亲352456bbhj',
         author: 'MyCql',
         fansNum: 2019,
         postNum: 10000,
         date: '2018-9-9',
         browseNum: 2018,
-        replyNum: 2018
+        replyNum: 2018,
+        content: '寻亲类别：宝贝寻家 寻亲编号：352456 姓 名：张华 性 别：男',
+        imgUrl: '../../assets/img2.jpg'
       },
-      content: 'asfdfas'
+      items: [1, 2, 3]
     }
   },
   methods: {
