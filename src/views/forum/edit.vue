@@ -37,11 +37,11 @@
       </div-->
 
       <div class="py-3 d-block" style="height:800px">
-        <mavon-editor style="height:700px"
+        <mavon-editor style="height:700px" v-model="comment"
           :boxShadow="false"
-          @save="$editorSave"
-          @imgAdd="$imgAdd" 
-          @imgDel="$imgDel">    
+          @save="editorSave"
+          @imgAdd="editorImgAdd" 
+          @imgDel="editorImgDel">    
       </mavon-editor>
       </div>
       <!-- editor end -->
@@ -65,9 +65,27 @@ export default {
   },
   data () {
     return {
+      saveFileName: 'testFile'
     }
   },
   methods: {
+    editorImgAdd (filename, file) {
+      console.log('======editorImgAdd() start======')
+      // 上传图片
+      // var formData = new FormData()
+    },
+    editorSave (value, render) {
+      console.log('======editorSave() start======')
+      // 打印输入内容
+      console.log(value)
+      /* var fso = new ActiveXObject('Scripting.FileSystemObject')
+      var file = fso.createtextfile('C:\\test.txt', true)
+      file.write(value)
+      var alink = document.createElement('a')
+      alink.href = this.imgs
+      alink.download = 'pic'
+      alink.click() */
+    }
   },
   created () {
     var E = window.wangEditor

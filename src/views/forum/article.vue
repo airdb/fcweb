@@ -63,7 +63,7 @@
         <!-- col-2 end -->
         <div class="col-10">
           <div class="text-secondary py-2 border-bottom mb-1">
-            <span class="text-danger">楼主  </span>发表于：{{article.date}}
+            <span class="text-danger" v-if="index === 0">楼主  </span>发表于：{{article.date}}
             <span class="float-right">{{index+1}} 楼</span>
           </div>
           <!-- header end -->
