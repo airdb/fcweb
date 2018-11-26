@@ -5,7 +5,7 @@ import test from '@/components/test'
 import transfer from '@/components/transfer'
 import tree from '@/components/tree'
 import newtree from '@/components/newtree'
-import login from '@/components/login'
+import login from '@/views/login'
 import navmenu from '@/components/navmenu'
 import signin from '@/components/signin'
 import signup from '@/components/signup'
@@ -23,7 +23,7 @@ import article from '@/views/forum/article'
 Vue.use(Router)
 
 export default new Router({
-//  mode: 'history',
+  // mode: 'history',
   routes: [
     // home
     { meta: { title: 'Home     | airdb.com' }, path: '/', name: 'root', component: home },

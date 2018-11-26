@@ -1,5 +1,8 @@
 <template>
   <div class="login">
+	<div>
+		<wxlogin :appid="config.appid" :scope="config.scope" :redirect_uri="config.redirect_uri"></wxlogin>
+	</div>
     <ul>
     <form accept-charset="UTF-8" >
      <h1>Sign in to airdb</h1>
@@ -16,15 +19,24 @@
     </form>
     </ul>
   </div>
-
 </template>
 
 <script>
+import wxlogin from '@/components/wxlogin'
+
 export default {
+  components: {
+    wxlogin
+  },
   name: 'signin',
   data () {
     this.apiurl = 'https://aws.airdb.io/lambda/test'
     return {
+      config: {
+        appid: 'wxb2a310377819aebd',
+        scope: 'snsapi_login',
+        redirect_uri: 'https://wechat.baobeihuijia.com/dev/lastest/wechatapi/wechat/login'
+      },
       user: sessionStorage.username,
       username: '',
       password: '',
