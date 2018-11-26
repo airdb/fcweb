@@ -31,8 +31,8 @@
     <!-- container end -->
 
     <div class="">
-      <router-link to="/login" class="btn btn-info btn-md"> 登陆 </router-link>
-      <router-link to="/signin" class="btn btn-info btn-md"> 注册 </router-link>
+      <router-link to="/login" class="text-light px-3 d-inline-block" style="font-size: 13px"> 登陆 </router-link>
+      <router-link to="/signin" class="btn btn-primary btn-md rounded-0" style="font-size: 13px"> 注册 </router-link>
     </div>
     <!-- login end -->
   </nav>  

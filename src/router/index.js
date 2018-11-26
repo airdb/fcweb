@@ -5,15 +5,15 @@ import test from '@/components/test'
 import transfer from '@/components/transfer'
 import tree from '@/components/tree'
 import newtree from '@/components/newtree'
-import login from '@/components/login'
 import navmenu from '@/components/navmenu'
 import signin from '@/components/signin'
 import signup from '@/components/signup'
 import root from '@/components/root'
 import Main from '@/components/Main'
 
-// home
+// main
 import home from '@/views/home'
+import login from '@/views/login'
 
 // forum
 import forum from '@/views/forum/forum'
