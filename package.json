@@ -19,6 +19,8 @@
     "babel-polyfill": "^6.26.0",
     "codemirror": "5.58.2",
     "iview": "^3.3.0",
+    "js-cookie": "^2.2.1",
+    "js-cookies": "^1.0.4",
     "moment": "^2.24.0 ",
     "noahv-component": "^1.0.13",
     "noahv-core": "^1.0.5",

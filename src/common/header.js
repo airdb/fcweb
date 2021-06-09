@@ -3,12 +3,10 @@
  */
 
 export default {
-    header: [
-        {
+    header: [{
             label: '模板示例',
             key: 'tplDemo',
-            children: [
-                {
+            children: [{
                     label: '表格示例',
                     key: 'tableDemo',
                     link: 'tableDemo'
@@ -28,8 +26,7 @@ export default {
         {
             label: '图表示例',
             key: 'chart',
-            children: [
-                {
+            children: [{
                     label: '图表示例',
                     key: 'chartDemo',
                     link: 'chartDemo'
@@ -58,7 +55,7 @@ export default {
     login: {
         hasLogin: true,
         url: '/airdb/v1/noah/user',
-        logout: '/airdb/v1/noah/user'
+        logout: '/?#/logout'
     },
     type: 'header',
     separator: '/'

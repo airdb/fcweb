@@ -6,7 +6,7 @@
 
 import Vue from 'vue';
 import Vuex from 'vuex';
-import {LOGIN, UPDATE_BASE_FLAG, UPDATE_USER_FLAG, UPDATE_TREE_ITEMS} from './mutation-types';
+import { LOGIN, UPDATE_BASE_FLAG, UPDATE_USER_FLAG, UPDATE_TREE_ITEMS } from './mutation-types';
 import api from 'common/header';
 import { getTreeItems } from "common/hook/ajax";
 
@@ -36,7 +36,7 @@ const mutations = {
 };
 
 const actions = {
-    getUserName({commit, state}) {
+    getUserName({ commit, state }) {
         // only request once
         if (api.login.hasLogin && !state.userNameReady) {
             if (api.login.url && api.login.url !== '') {
@@ -54,7 +54,7 @@ const actions = {
         }
     },
     // 获取基础数据
-    getBaseData({commit}) {
+    getBaseData({ commit }) {
         let depInfo = [];
         return Promise.all(depInfo).then(() => {
             // 基础信息准备完成标识
