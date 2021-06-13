@@ -25,7 +25,7 @@ import { getToken } from './common/token'
 // If wanted diy layout, please import this file
 // import layoutApp from './common/layout/layout';
 const LOGIN_PAGE_PATH = '/login'
-const ROLLBACK_PATH = '/rollback'
+const ROLLBACK_PATH = '/callback'
     // keep this
 Vue.use(VueRouter);
 

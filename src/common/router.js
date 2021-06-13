@@ -13,8 +13,8 @@ export default [
         path: 'logout'
     },
     {
-        component: r => require.ensure([], () => r(require('src/view/rollback')), 'rollback'),
-        path: 'rollback',
+        component: r => require.ensure([], () => r(require('src/view/rollback')), 'callback'),
+        path: 'callback',
     },
     {
         component: r => require.ensure([], () => r(require('src/demo/tree')), 'demo/tree'),
