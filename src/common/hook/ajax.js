@@ -3,6 +3,7 @@
  */
 import request from 'noahv-request';
 import {getToken} from '../token';
+import noahv from 'noahv-core';
 
 const LiveDomain = 'https://scf.baobeihuijia.com/release';
 const TestDomain = 'https://scf.baobeihuijia.com/test';
@@ -23,7 +24,7 @@ request.hooks.beforeRequest = config => {
 request.hooks.beforeSuccess = res => {
     // 未登录
     if (res.status == 50000) {
-        this.$router.push({path: LOGIN_PAGE_PATH});
+        noahv.router.push({path: LOGIN_PAGE_PATH});
     }
     return res;
 };
