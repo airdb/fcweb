@@ -5,4 +5,4 @@
 
 
 #### 回调地址
-http://localhost:8088/?#/rollback?token=68b329da9893e34099c7d8ad5cb9c940
+http://localhost:8088/?#/callback?token=68b329da9893e34099c7d8ad5cb9c940

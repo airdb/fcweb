@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import {getTree} from '../common/api';
 
 export default {
     name: 'nvTreeCheckedDemo',
@@ -18,24 +19,21 @@ export default {
         return {
             search: true,
             checkbox: true,
-            items: {},
+            items: {}
         };
     },
     methods: {
         onCheckChangeHandler: function () {
             this.$Message.info('check changed');
-        },
+        }
     },
     mounted() {
-        var _this = this
+        var _this = this;
 
-        _this.$request({
-            url: "/airdb/v1/noah/tree",
-            method: "get"
-        }).then(function(resp){
-            console.log(resp.data.data)
-            _this.items = resp.data
-        })
+        getTree(this).then(function (resp) {
+            console.log(resp.data.data);
+            _this.items = resp.data;
+        });
     }
 };
 </script>

@@ -1,25 +1,31 @@
 /**
  * @file ajax hook conf
  */
-import axios from 'axios'
-
 import request from 'noahv-request';
+import {getToken} from '../token';
 
-const LiveDomain = "https://scf.baobeihuijia.com/release"
-const TestDomain = "https://scf.baobeihuijia.com/test"
-
+const LiveDomain = 'https://scf.baobeihuijia.com/release';
+const TestDomain = 'https://scf.baobeihuijia.com/test';
+const LOGIN_PAGE_PATH = '/login';
 // 请求发出前处理，如果需要改变参数或Header，请在此修改
 request.hooks.beforeRequest = config => {
-    config.url = TestDomain + config.url
-    console.log("xxx", config.url)
+    let token = getToken();
+    if (!token) {
+        token = '';
+    }
+    config.headers['Authentication'] = token;
+    config.url = TestDomain + config.url;
+    console.log('xxx', config.url);
     return config;
 };
 
 // // 收到相应后处理，如果需要改变数据，请在此修改
-// request.hooks.beforeSuccess = res => {
-//     return res;
-// };
+request.hooks.beforeSuccess = res => {
+    // 未登录
+    if (res.status == 50000) {
+        this.$router.push({path: LOGIN_PAGE_PATH});
+    }
+    return res;
+};
+export default request;
 
-export const getTreeItems = () => {
-    return axios.get("https://scf.baobeihuijia.com/test/airdb/v1/noah/tree")
-}

@@ -20,15 +20,14 @@ import footerApp from './common/layout/footer';
 import store from './store/';
 import './common/hook/ajax';
 import './common/assets/css/main.less';
-import { getToken } from './common/token'
+import {getToken} from './common/token';
 
 // If wanted diy layout, please import this file
 // import layoutApp from './common/layout/layout';
-const LOGIN_PAGE_PATH = '/login'
-const ROLLBACK_PATH = '/callback'
-    // keep this
+const LOGIN_PAGE_PATH = '/login';
+const ROLLBACK_PATH = '/callback';
+// keep this
 Vue.use(VueRouter);
-
 
 
 // import iview & noahvComponent
@@ -49,7 +48,6 @@ noahv.layout(headerConfig, footerApp);
 noahv.router(routerConfig);
 noahv._router.beforeEach((to, from, next) => {
     const token = getToken();
-    console.log(token);
     // 授权登陆回调地址
     if (!token && to.path === ROLLBACK_PATH) {
         next();
@@ -57,22 +55,22 @@ noahv._router.beforeEach((to, from, next) => {
     }
     // 登陆界面
     if (!token && to.path !== LOGIN_PAGE_PATH) {
-        console.log("token 不存在")
-            // 未登录且要当前页不是登录页 则需要跳转到 登陆页
-        next({ path: LOGIN_PAGE_PATH });
+        console.log('token 不存在');
+        // 未登录且要当前页不是登录页 则需要跳转到 登陆页
+        next({path: LOGIN_PAGE_PATH});
         return;
         // next()
     }
 
     // token 存在 且访问登陆界面则跳转到 首页
     if (token && to.path == LOGIN_PAGE_PATH) {
-        console.log("token 存在");
-        next({ path: 'demo/tree' });
+        console.log('token 存在');
+        next({path: 'demo/tree'});
         return;
     }
     // token 存在
     if (token) {
-        console.log("token 存在");
+        console.log('token 存在');
     }
     next();
 });
