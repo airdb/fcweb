@@ -2,7 +2,7 @@
  * @file ajax hook conf
  */
 import request from 'noahv-request';
-import {getToken} from '../token';
+import { getToken } from '../token';
 import noahv from 'noahv-core';
 
 const LiveDomain = 'https://scf.baobeihuijia.com/release';
@@ -14,7 +14,7 @@ request.hooks.beforeRequest = config => {
     if (!token) {
         token = '';
     }
-    config.headers['Authentication'] = token;
+    config.headers['Authorization'] = token;
     config.url = TestDomain + config.url;
     console.log('xxx', config.url);
     return config;
@@ -24,9 +24,8 @@ request.hooks.beforeRequest = config => {
 request.hooks.beforeSuccess = res => {
     // 未登录
     if (res.status == 50000) {
-        noahv.router.push({path: LOGIN_PAGE_PATH});
+        noahv.router.push({ path: LOGIN_PAGE_PATH });
     }
     return res;
 };
 export default request;
-

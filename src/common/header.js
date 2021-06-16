@@ -54,7 +54,7 @@ export default {
     },
     login: {
         hasLogin: true,
-        url: '/airdb/v1/noah/user',
+        url: '/uic/user/query',
         logout: '/?#/logout'
     },
     type: 'header',
