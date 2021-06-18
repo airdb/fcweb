@@ -53,7 +53,7 @@ export default {
         src: require('common/assets/img/logo.png')
     },
     login: {
-        hasLogin: true,
+        hasLogin: false,
         url: '/uic/user/query',
         logout: '/?#/logout'
     },
