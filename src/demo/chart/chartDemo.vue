@@ -127,7 +127,7 @@ export default {
             lineConf: {
                 title: '全年平均降雨量(非时序数据趋势图)',
                 type: 'line',
-                chartUrl: '/noah/chart/line/get',
+                chartUrl: '/airdb/noah/chart/line/get',
                 params: {
                 },
                 options: {
@@ -136,7 +136,7 @@ export default {
             columnConf: {
                 title: '全年平均降雨量(柱状图)',
                 type: 'column',
-                chartUrl: '/noah/chart/line/get',
+                chartUrl: '/airdb/noah/chart/line/get',
                 params: {
                 },
                 options: {
@@ -145,7 +145,7 @@ export default {
             pieConf: {
                 title: '浏览器市场占用率(饼状图)',
                 type: 'pie',
-                chartUrl: '/noah/chart/pie/get',
+                chartUrl: '/airdb/noah/chart/pie/get',
                 params: {
                     dev: true
                 },
@@ -155,7 +155,7 @@ export default {
             pie2Conf: {
                 title: '浏览器市场占用率(环状图)',
                 type: 'pie',
-                chartUrl: '/noah/chart/pie/get',
+                chartUrl: '/airdb/noah/chart/pie/get',
                 params: {
                     dev: true
                 },
@@ -166,7 +166,7 @@ export default {
                 // title 可选
                 title: '时序数据趋势图',
                 // api 必选
-                url: '/noah/chart/trend/get',
+                url: '/airdb/noah/chart/trend/get',
                 params: {
                     startTime: m().subtract(2, 'hour').format(dateFormat),
                     endTime: m().format(dateFormat)
